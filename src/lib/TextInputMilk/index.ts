@@ -1,0 +1,1 @@
+export { default as TextInputMilk } from './TextInputMilk.svelte';

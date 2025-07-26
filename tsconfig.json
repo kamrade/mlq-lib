@@ -9,7 +9,12 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"module": "NodeNext",
-		"moduleResolution": "NodeNext"
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"baseUrl": "src",
+    "paths": {
+			"@lib": ["lib"],
+      "@lib/*": ["lib/*"]
+    }
 	}
 }

@@ -1,6 +1,9 @@
 <script lang="ts">
   import type { ITextInputProps } from './TextInput.types';
 
+  let inputEl: HTMLInputElement;
+  export const focus = () => inputEl?.focus();
+
   let {
     onKeyDown,
     onKeyUp,
@@ -21,13 +24,14 @@
 </script>
 
 <input 
+  bind:this={inputEl}
+  bind:value
   class={`TextInput ${invalid ? 'invalid' : ''}`}
   onfocus={onFocus}
   onblur={onBlur} 
   onkeydown={onKeyDown} 
   onkeyup={onKeyUp}
   onchange={onChange}
-  bind:value 
   {type} 
   {placeholder} 
   {disabled} 
@@ -41,7 +45,7 @@
 <style lang="scss">
   
   .TextInput {
-    --transition: all .25s ease-in-out;
+    --transition: border-color .25s ease-in-out;
 
     // Base size
     --paddingY: 8px;

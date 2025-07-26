@@ -27,6 +27,7 @@ export default {
     --hoverBackground: #E2E4E8;
     --activeBackground: #D3D5DC;
     --color: #26272B;
+    --focusColor: #28282B;
   `,
 
   baseOutlinedVariables : `
@@ -35,6 +36,7 @@ export default {
     --activeBackground: #D3D5DC;
     --color: #26272B;
     --borderColor: #D3D5DC;
+    --focusColor: #28282B;
   `,
 
   baseEmphasisVariables: `

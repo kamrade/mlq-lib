@@ -45,6 +45,15 @@ export default {
     --borderBottomWidthInvalid: var(--borderWidth);
     --borderLeftWidthInvalid: 0px;
     --borderRightWidthInvalid: 0px;
+  `,
+
+  text : `
+    --paddingX: 0px;
+    --borderRadius: 0;
+    --borderWidth: 0px;
+    --backgroundColor: transparent;
+    --borderColor: transparent;
+    --borderColorFocus: transparent;    
   `
 
 }

@@ -2,6 +2,10 @@ import type { ChangeEventHandler, FocusEventHandler, KeyboardEventHandler } from
 
 export type TextInputType = "text" | "password";
 
+export type TextInputInstance = {
+  focus: () => void;
+};
+
 export interface ITextInputProps {
   value?: string;
   onKeyDown?: KeyboardEventHandler<HTMLInputElement>;

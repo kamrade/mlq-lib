@@ -1,6 +1,8 @@
 <script lang="ts">
   import type { KeyboardEventHandler, ChangeEventHandler } from "svelte/elements";
-	import TextInput from "@lib/TextInput/TextInput.svelte";
+	import { TextInput, Button, type TextInputInstance } from "@lib";
+
+  let textInputRef: TextInputInstance;
 
   // Bindable Text Input
 	let textInputValue = $state('');
@@ -74,8 +76,10 @@
 
 <h3 class="text-lg mb-2">Text Input with onChange</h3>
 <div class="mb-2">
-  <TextInput {onChange} placeholder="Track changes" />
+  <TextInput bind:this={textInputRef} {onChange} placeholder="Track changes" />
   <div class="py-2 text-gray-500 text-xs">Value changed to (updates after the field lost focus): {changedValue}</div>
 </div>
+
+<Button clickHandler={() => textInputRef.focus()}>Focus on TextInput above</Button>
 
 <hr class="mt-4 mb-8 border-t border-gray-300" />

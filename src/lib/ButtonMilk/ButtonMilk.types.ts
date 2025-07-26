@@ -1,11 +1,11 @@
 import type { IButtonProps } from '@lib/Button/Button.types';
 
-export type MilkButtonSizes = 'sm' | 'md' | 'lg';
-export type MilkButtonVariants = 
+export type ButtonMilkSizes = 'sm' | 'md' | 'lg';
+export type ButtonMilkVariants = 
   'primary-emphasis' | 'primary-outlined' | 'primary-contained' | 
   'base-contained' | 'base-outlined' | 'base-emphasis';
 
-export interface IMilkButtonProps extends IButtonProps {
-  size?: MilkButtonSizes;
-  variant?: MilkButtonVariants;
+export interface IButtonMilkProps extends IButtonProps {
+  size?: ButtonMilkSizes;
+  variant?: ButtonMilkVariants;
 }

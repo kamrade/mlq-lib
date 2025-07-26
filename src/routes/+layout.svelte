@@ -27,6 +27,8 @@
               <li><a href="/showcase/text-input-primitive" class="text-gray-700 hover:underline">Text Input Primitive</a></li>
               <li><a href="/showcase/text-input-label" class="text-gray-700 hover:underline">Text Input with Label</a></li>
               <li><a href="/showcase/text-input-milk" class="text-gray-700 hover:underline">Text Input Milk</a></li>
+              <li><a href="/showcase/text-input-block" class="text-gray-700 hover:underline">Text Input Block</a></li>
+              <li><a href="/showcase/text-input-bindable" class="text-gray-700 hover:underline">Text Input Bindable</a></li>
             </ul>
           </nav>
         </aside>

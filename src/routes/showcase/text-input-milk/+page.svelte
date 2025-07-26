@@ -27,3 +27,9 @@
 <div class="mb-4">
   <TextInputMilk readonly variant="underlined" size="lg" placeholder="Large Underlined Readonly Text Input" />
 </div>
+
+<div class="mb-4 mt-8">
+  <hr class="border-t border-gray-300" />
+    <TextInputMilk variant="text" size="lg" placeholder="Enter your text here" />
+  <hr class="border-t border-gray-300" />
+</div>

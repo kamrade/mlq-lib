@@ -1,9 +1,6 @@
 <script lang="ts">
   import type { ITextInputProps } from './TextInput.types';
 
-  let inputEl: HTMLInputElement;
-  export const focus = () => inputEl?.focus();
-
   let {
     onKeyDown,
     onKeyUp,
@@ -21,6 +18,10 @@
     style,
     ...rest
   }: ITextInputProps = $props();
+
+  let inputEl: HTMLInputElement;
+  export const focus = () => inputEl?.focus();
+
 </script>
 
 <input 

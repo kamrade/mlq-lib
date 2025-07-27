@@ -24,11 +24,15 @@
               <li class="text-xs uppercase tracking-wider text-gray-500 font-medium">Button</li>
               <li><a href="/showcase/button-primitive" class="text-gray-700 hover:underline">Button Primitive</a></li>
               <li><a href="/showcase/button-milk" class="text-gray-700 hover:underline">Button Milk</a></li>
+              <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">TextInput</li>
               <li><a href="/showcase/text-input-primitive" class="text-gray-700 hover:underline">Text Input Primitive</a></li>
+              <li><a href="/showcase/text-input-primitive-actions" class="text-gray-700 hover:underline">Text Input Primitive Actions</a></li>
               <li><a href="/showcase/text-input-label" class="text-gray-700 hover:underline">Text Input with Label</a></li>
               <li><a href="/showcase/text-input-milk" class="text-gray-700 hover:underline">Text Input Milk</a></li>
               <li><a href="/showcase/text-input-block" class="text-gray-700 hover:underline">Text Input Block</a></li>
               <li><a href="/showcase/text-input-bindable" class="text-gray-700 hover:underline">Text Input Bindable</a></li>
+              <li><a href="/showcase/checkbox-primitive" class="text-gray-700 hover:underline">Checkbox Primitive</a></li>
+              <li><a href="/showcase/checkbox-primitive-form" class="text-gray-700 hover:underline">Checkbox Primitive Form</a></li>
             </ul>
           </nav>
         </aside>

@@ -9,15 +9,15 @@
 
 <style lang="scss">
   .Label {
-    --fontSize: 14px;
-    --lineHeight: 20px;
-    --marginBottom: .25rem;
+    --font-size: 14px;
+    --line-height: 20px;
+    --margin-bottom: .25rem;
   }
 
   .Label {
     display: block;
-    font-size: var(--fontSize);
-    line-height: var(--lineHeight);
-    margin-bottom: var(--marginBottom);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    margin-bottom: var(--margin-bottom);
   }
 </style>

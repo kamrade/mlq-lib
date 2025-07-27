@@ -63,6 +63,14 @@
     --background-color: white;
     --border-color: var(--color-gray-500);
 
+    --background-color-checked: var(--color-blue-700);
+    --color-checked: white;
+    --border-color-checked: var(--background-color-checked);
+
+    --color-outline-focused: var(--color-blue-700);
+
+    --opacity-disabled: 0.6;
+
   }
 
   .checkbox-button {
@@ -81,13 +89,13 @@
 
   .checkbox-button[aria-checked="true"],
   .checkbox-button[aria-checked="mixed"] {
-    background: #4f46e5;
-    color: white;
-    border-color: #4f46e5;
+    background: var(--background-color-checked);
+    color: var(--color-checked);
+    border-color: var(--border-color-checked);
   }
 
   .checkbox-icon {
-    font-size: 0.75rem;
+    font-size: 0.75em;
     line-height: 1;
     pointer-events: none;
     opacity: 0;
@@ -98,12 +106,12 @@
   }
 
   .checkbox-button:focus-visible {
-    outline: 2px solid #4f46e5;
-    outline-offset: 2px;
+    outline: 2px solid var(--color-outline-focused);
+    outline-offset: 1px;
   }
 
   .checkbox-button[disabled] {
-    opacity: 0.5;
+    opacity: var(--opacity-disabled);
     pointer-events: none;
   }
 </style>

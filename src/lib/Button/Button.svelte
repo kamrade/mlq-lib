@@ -50,28 +50,28 @@
   }
 
   .Button {
-    --paddingY: 5px;
-    --paddingX: 16px;
-    --backgroundColor: #444;
-    --hoverBackground: #333;
-    --activeBackground: #222;
-    --disabledBackgroundColor: var(--backgroundColor);
+    --padding-y: 5px;
+    --padding-x: 16px;
+    --background-color: var(--color-gray-700);
+    --hover-background: var(--color-gray-800);
+    --active-background: var(--color-gray-900);
+    --disabled-background-color: var(--background-color);
     --color: #fff;
-    --hoverColor: var(--color);
-    --activeColor: var(--color);
-    --disabledColor: var(--color);
-    --fontSize: 16px;
-    --lineHeight: 1.5;
-    --borderRadius: 8px;
-    --innerGap: 4px;
-    --borderWidth: 1px;
-    --borderColor: transparent;
-    --hoverBorderColor: var(--borderColor);
-    --activeBorderColor: var(--borderColor);
-    --disabledBorderColor: var(--borderColor);
-    --focusColor: var(--backgroundColor);
-    --focusShadow: 0 0 0 2px var(--focusColor);
-    --disabledOpacity: 0.6;
+    --hover-color: var(--color);
+    --active-color: var(--color);
+    --disabled-color: var(--color);
+    --font-size: 16px;
+    --line-height: 1.5;
+    --border-radius: 8px;
+    --inner-gap: 4px;
+    --border-width: 1px;
+    --border-color: transparent;
+    --hoverBorder-color: var(--border-color);
+    --active-border-color: var(--border-color);
+    --disabled-border-color: var(--border-color);
+    --focus-color: var(--background-color);
+    --focus-shadow: 0 0 0 2px var(--focus-color);
+    --disabled-opacity: 0.6;
   }
 
   .Button {
@@ -85,28 +85,28 @@
     text-align: center;
     justify-content: center;
 
-    border: var(--borderWidth) solid var(--borderColor);
-    padding: var(--paddingY) var(--paddingX);
-    background: var(--backgroundColor);
+    border: var(--border-width) solid var(--border-color);
+    padding: var(--padding-y) var(--padding-x);
+    background: var(--background-color);
     color: var(--color);
-    font-size: var(--fontSize);
-    line-height: var(--lineHeight);
-    border-radius: var(--borderRadius);
-    gap: var(--innerGap);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    border-radius: var(--border-radius);
+    gap: var(--inner-gap);
 
     transition: all .2s ease-in-out;
     box-sizing: border-box;
 
     &:not(:disabled):hover {
-      background: var(--hoverBackground);
-      color: var(--hoverColor);
-      border-color: var(--hoverBorderColor);
+      background: var(--hover-background);
+      color: var(--hover-color);
+      border-color: var(--hover-border-color);
     }
 
     &:not(:disabled):active {
-      background: var(--activeBackground);
-      color: var(--activeColor);
-      border-color: var(--activeBorderColor);
+      background: var(--active-background);
+      color: var(--active-color);
+      border-color: var(--active-border-color);
     }
 
     &:not(:active):focus {
@@ -119,16 +119,16 @@
         right: -2px;
         z-index: 0;
         opacity: .5;
-        border-radius: calc(var(--borderRadius) + 1px);
-        box-shadow: var(--focusShadow);
+        border-radius: calc(var(--border-radius) + 1px);
+        box-shadow: var(--focus-shadow);
       }
     }
 
     &:disabled, &.loading {
-      opacity: var(--disabledOpacity);
-      color: var(--disabledColor);
-      background-color: var(--disabledBackgroundColor);
-      border-color: var(--disabledBorderColor);
+      opacity: var(--disabled-opacity);
+      color: var(--disabled-color);
+      background-color: var(--disabled-background-color);
+      border-color: var(--disabled-border-color);
     }
 
     &.block {
@@ -148,9 +148,9 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: var(--disabledBackgroundColor);
+      background-color: var(--disabled-background-color);
       display: none;
-      border-radius: var(--borderRadius);
+      border-radius: var(--border-radius);
       justify-content: center;
       align-items: center;
 

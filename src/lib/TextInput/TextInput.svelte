@@ -16,6 +16,7 @@
     value = $bindable(),
     invalid,
     style,
+    classNames,
     ...rest
   }: ITextInputProps = $props();
 
@@ -27,7 +28,7 @@
 <input 
   bind:this={inputEl}
   bind:value
-  class={`TextInput ${invalid ? 'invalid' : ''}`}
+  class={`TextInput ${invalid ? 'invalid' : ''} ${classNames}`}
   onfocus={onFocus}
   onblur={onBlur} 
   onkeydown={onKeyDown} 

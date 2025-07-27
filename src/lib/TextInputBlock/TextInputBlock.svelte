@@ -34,6 +34,7 @@
   {/if}
   
   <TextInputMilk
+    variant="underlined"
     bind:this={textInputRef}
     style={`padding-left: ${prefixWidth + 4}px; padding-right: ${suffixWidth + 4}px;`} 
     bind:value

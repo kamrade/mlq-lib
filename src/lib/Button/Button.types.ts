@@ -8,7 +8,10 @@ export type ButtonInstance = {
 
 export interface IButtonProps {
   focus?: () => void;
-  clickHandler?: (e: MouseEvent) => void;
+  onClick?: (e: MouseEvent) => void;
+  onMouseEnter?: (e: MouseEvent) => void;
+  onMouseLeave?: (e: MouseEvent) => void;
+  classNames?: string;
   disabled?: boolean;
   type?: ButtonType;
   name?: string;

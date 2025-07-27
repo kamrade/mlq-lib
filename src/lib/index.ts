@@ -5,3 +5,7 @@ export * from './TextInput';
 export * from './TextInputMilk';
 export * from './TextInputBlock';
 export * from './Checkbox';
+export * from './Menu';
+export * from './Command';
+
+export * from './utils';

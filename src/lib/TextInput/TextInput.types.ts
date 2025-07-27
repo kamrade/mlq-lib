@@ -21,5 +21,5 @@ export interface ITextInputProps {
   id?: string;
   invalid?: boolean;
   style?: string;
-
+  classNames?: string;
 }

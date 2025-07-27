@@ -12,7 +12,7 @@
   <div class="py-2 text-gray-500 text-xs">Current value: {textInputValue}</div>
 </div>
 <div class="flex gap-2">
-  <ButtonMilk size='lg' clickHandler={() => textInputBlock.focus()}>Focus</ButtonMilk>
-  <ButtonMilk variant="base-contained" size='lg' clickHandler={() => textInputValue = ""}>Clear</ButtonMilk>
+  <ButtonMilk size='lg' onClick={() => textInputBlock.focus()}>Focus</ButtonMilk>
+  <ButtonMilk variant="base-contained" size='lg' onClick={() => textInputValue = ""}>Clear</ButtonMilk>
 </div>
 <hr class="mt-4 mb-8 border-t border-gray-300" />

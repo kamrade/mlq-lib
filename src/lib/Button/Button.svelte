@@ -7,7 +7,10 @@
   export const focus = () => buttonEl?.focus();
 
   let { 
-    clickHandler, 
+    onClick,
+    onMouseEnter,
+    onMouseLeave,
+    classNames,
     disabled = false, 
     type = 'button', 
     name, 
@@ -23,9 +26,11 @@
 
 <button
   bind:this={buttonEl}
-  onclick={clickHandler}
+  onclick={onClick}
+  onmouseenter={onMouseEnter}
+  onmouseleave={onMouseLeave}
   disabled={disabled || loading} {type} {name} {id} {style} {...rest}
-  class="Button"
+  class={`Button ${classNames}`}
   class:block={block}
   class:loading={loading}
 >
@@ -66,7 +71,7 @@
     --inner-gap: 4px;
     --border-width: 1px;
     --border-color: transparent;
-    --hoverBorder-color: var(--border-color);
+    --hover-border-color: var(--border-color);
     --active-border-color: var(--border-color);
     --disabled-border-color: var(--border-color);
     --focus-color: var(--background-color);

@@ -21,4 +21,4 @@
 </TextInputBlock>
 <div class="py-2 text-gray-500 text-xs">Current value: {textInputBlockValue}</div>
 
-<ButtonMilk size="lg" variant="base-contained" clickHandler={() => textInputBlock.focus()}>Focus the TextInput above</ButtonMilk>
+<ButtonMilk size="lg" variant="base-contained" onClick={() => textInputBlock.focus()}>Focus the TextInput above</ButtonMilk>

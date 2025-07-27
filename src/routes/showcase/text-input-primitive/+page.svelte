@@ -80,6 +80,6 @@
   <div class="py-2 text-gray-500 text-xs">Value changed to (updates after the field lost focus): {changedValue}</div>
 </div>
 
-<Button clickHandler={() => textInputRef.focus()}>Focus on TextInput above</Button>
+<Button onClick={() => textInputRef.focus()}>Focus on TextInput above</Button>
 
 <hr class="mt-4 mb-8 border-t border-gray-300" />

@@ -33,6 +33,9 @@
               <li><a href="/showcase/text-input-bindable" class="text-gray-700 hover:underline">Text Input Bindable</a></li>
               <li><a href="/showcase/checkbox-primitive" class="text-gray-700 hover:underline">Checkbox Primitive</a></li>
               <li><a href="/showcase/checkbox-primitive-form" class="text-gray-700 hover:underline">Checkbox Primitive Form</a></li>
+              <li><a href="/showcase/menu" class="text-gray-700 hover:underline">Menu on hover</a></li>
+              <li><a href="/showcase/menu-onclick" class="text-gray-700 hover:underline">Menu on click</a></li>
+              <li><a href="/showcase/command" class="text-gray-700 hover:underline">Command</a></li>
             </ul>
           </nav>
         </aside>

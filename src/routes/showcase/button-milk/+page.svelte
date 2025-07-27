@@ -9,7 +9,7 @@
 <h2 class="text-2xl font-medium mb-4">Button Component</h2>
 
 <div class="mb-8 flex gap-2 items-start">
-  <ButtonMilk clickHandler={() => buttonRef.focus()} variant="base-contained" size="sm"><CheckboxCircleFillSystem size="1em"/>Focus button</ButtonMilk>
+  <ButtonMilk onClick={() => buttonRef.focus()} variant="base-contained" size="sm"><CheckboxCircleFillSystem size="1em"/>Focus button</ButtonMilk>
   <ButtonMilk bind:this={buttonRef} variant="base-outlined" size="sm"><CheckboxCircleFillSystem size="1em"/>To be focused</ButtonMilk>
 </div>
 

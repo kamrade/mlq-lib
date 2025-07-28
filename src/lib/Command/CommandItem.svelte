@@ -74,6 +74,10 @@
     border-radius: var(--item-border-radius);
     transition: background .3s ease-in-out;
 
+    &:focus-visible, &:focus-within {
+      outline: none;
+    }
+
     &.active {
       background: var(--item-active);
       &:hover {

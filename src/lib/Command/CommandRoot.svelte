@@ -1,10 +1,34 @@
 <script lang="ts">
+  import { setContext } from 'svelte';
+  import { writable } from 'svelte/store';
+  import { sortItemsByDOMPosition } from './Command.utils';
   import type { ICommandRootProps } from './Command.types';
+
   let { classNames, children }: ICommandRootProps = $props();
+
+
+  const items = writable<HTMLElement[]>([]); // Здесь массив всех дочерних Items
+  const activeIndex = writable(-1); // Число - текущий активный индекс
+  
+  // Пробросить контекст
+  setContext('command-items', items);
+  setContext('active-index', activeIndex);
+
+  
+  // let sortedItems = $state<HTMLElement[]>([]);
+  // Отсортировать по порядку
+  // items.subscribe((itms: HTMLElement[]) => sortedItems = sortItemsByDOMPosition(itms));
+
+  
+  
 </script>
 
 <div class={`CommandRoot ${classNames}`}>
   {@render children()}
+</div>
+
+<div class="my-3">
+  {$activeIndex}
 </div>
 
 <style lang="scss">

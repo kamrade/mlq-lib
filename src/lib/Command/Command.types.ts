@@ -18,3 +18,5 @@ export interface ICommandItemProps {
   disabled?: boolean;
   children: Snippet;
 }
+
+export type CommandItemEntry = { el: HTMLElement; id: symbol };

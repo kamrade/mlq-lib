@@ -1,25 +1,13 @@
 <script lang="ts">
   import { setContext } from 'svelte';
   import { writable } from 'svelte/store';
-  import { sortItemsByDOMPosition } from './Command.utils';
   import type { ICommandRootProps } from './Command.types';
 
   let { classNames, children }: ICommandRootProps = $props();
 
-
-  const items = writable<HTMLElement[]>([]); // Здесь массив всех дочерних Items
-  const activeIndex = writable(-1); // Число - текущий активный индекс
-  
-  // Пробросить контекст
-  setContext('command-items', items);
-  setContext('active-index', activeIndex);
-
-  
-  // let sortedItems = $state<HTMLElement[]>([]);
-  // Отсортировать по порядку
-  // items.subscribe((itms: HTMLElement[]) => sortedItems = sortItemsByDOMPosition(itms));
-
-  
+  const items = writable<{ el: HTMLElement; id: symbol }[]>([]);
+  const activeIndex = writable(0);
+  setContext('command-items', { items, activeIndex });
   
 </script>
 
@@ -44,7 +32,8 @@
     --padding-y: 7px;
     --padding-x: 12px;
     --inner-gap: 7px;
-    --item-hover: var(--color-gray-300);
+    --item-hover: var(--color-gray-200);
+    --item-active: var(--color-gray-300);
     --item-border-radius: 8px;
     --opacity-item-disabled: 0.6;
 

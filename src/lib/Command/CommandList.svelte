@@ -3,7 +3,7 @@
   let { children } : ICommandListProps = $props();
 </script>
 
-<div class="CommandList">
+<div class="CommandList" role="listbox">
   {@render children()}
 </div>
 

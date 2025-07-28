@@ -1,33 +1,51 @@
 <script lang="ts">
-  import { getContext, onMount } from 'svelte';
-  import { derived } from 'svelte/store';
-  import type { Writable } from 'svelte/store';
-  import type { ICommandItemProps } from './Command.types';
+  import { getContext, onMount, onDestroy } from 'svelte';
+  import { derived, get, type Writable } from 'svelte/store';
+  import type { ICommandItemProps, CommandItemEntry } from './Command.types';
+  import { addItemSorted } from './Command.utils';
+
+
   let { disabled, children } : ICommandItemProps = $props();
 
-  // контекст где хранится массив элементов Items
-  const items = getContext<Writable<HTMLElement[]>>('command-items');
-  // Контекст, котороый передает текущий выбранный элемент
-  const activeIndex = getContext<Writable<number>>('active-index');
+  const { items, activeIndex }: {
+    items: Writable<CommandItemEntry[]>;
+    activeIndex: Writable<number>;
+  } = getContext('command-items');
+
   let el: HTMLElement;
-  let myIndex = -2;
+  const id = Symbol();
 
   onMount(() => {
-    items.update(list => {
-      const newArr = [...list, el];
-      myIndex = newArr.indexOf(el)
-      return newArr;
-    });
-    return () => {
-      items.update(list => list.filter(i => i !== el));
-    }
-  })
+    items.update(list => addItemSorted(list, { el, id, disabled: !!disabled }));
+  });
 
-  const isActive = derived(activeIndex, $i => $i === myIndex);
+  onDestroy(() => {
+    items.update(list => list.filter(item => item.id !== id));
+  });
+
+  // Реактивный индекс
+  const myIndex = derived(items, $items =>
+    $items.findIndex(item => item.id === id)
+  );
+
+  const isActive = derived(
+    [myIndex, activeIndex],
+    ([$myIndex, $activeIndex]) => $myIndex === $activeIndex
+  );
 
   function handleClick() {
-    activeIndex.set(myIndex);
+    if (disabled) return;
+    activeIndex.set(get(myIndex));
   }
+
+  $effect(() => {
+    if ($isActive) {
+      el.scrollIntoView({ block: 'nearest' });
+    }
+  });
+
+  
+  
 </script>
 
 <div 
@@ -57,7 +75,10 @@
     transition: background .3s ease-in-out;
 
     &.active {
-      background: coral;
+      background: var(--item-active);
+      &:hover {
+        background: var(--item-active);
+      }
     }
 
     &.disabled {

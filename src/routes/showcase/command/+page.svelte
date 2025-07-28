@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CommandRoot, CommandInput, CommandList, CommandGroup, CommandItem, TextInputMilk, TextInputBlock } from '@lib';
+  import { CommandRoot, CommandInput, CommandList, CommandGroup, CommandItem } from '@lib';
   import { CalendarLineBusiness, UserSmileLineUserFaces } from 'svelte-remix';
   import type { Snippet } from 'svelte';
 

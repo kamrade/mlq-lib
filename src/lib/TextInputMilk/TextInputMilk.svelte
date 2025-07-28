@@ -9,8 +9,6 @@
     ...rest
   }: ITextInputMilkProps = $props();
 
-  $effect(() => console.log(variant));
-
   // Прокидываем фокус примитива
   let textInputRef: TextInputInstance;
   export const focus = () => textInputRef.focus();

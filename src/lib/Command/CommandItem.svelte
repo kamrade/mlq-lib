@@ -7,9 +7,9 @@
 
   let { disabled, children } : ICommandItemProps = $props();
 
-  const { items, activeIndex, searchQuery }: {
+  const { items, activeItemId, searchQuery }: {
     items: Writable<CommandItemEntry[]>;
-    activeIndex: Writable<number>;
+    activeItemId: Writable<symbol>;
     searchQuery: Writable<string>;
   } = getContext('command-items');
 
@@ -39,14 +39,11 @@
     $items.findIndex(item => item.id === id)
   );
 
-  const isActive = derived(
-    [myIndex, activeIndex],
-    ([$myIndex, $activeIndex]) => $myIndex === $activeIndex
-  );
+  const isActive = derived(activeItemId, $id => $id === id);
 
   function handleClick() {
     if (disabled) return;
-    activeIndex.set(get(myIndex));
+    activeItemId.set(id);
   }
 
   $effect(() => {

@@ -6,9 +6,10 @@
   let { classNames, children }: ICommandRootProps = $props();
 
   const items = writable<CommandItemEntry[]>([]);
-  const activeIndex = writable(0);
+  // const activeIndex = writable(0);
+  const activeItemId = writable<symbol | null>(null);
   const searchQuery = writable('');
-  setContext('command-items', { items, activeIndex, searchQuery });
+  setContext('command-items', { items, activeItemId, searchQuery });
 
   let visibleItems = $state<CommandItemEntry[]>([]);
 
@@ -23,34 +24,38 @@
 
   function handleKeydown(e: KeyboardEvent) {
     
-    const commandIndex = get(activeIndex);
+    // const commandIndex = get(activeIndex);
 
     if (!visibleItems.length) return;
+
+    const index = visibleItems.findIndex(i => i.id === get(activeItemId));
+    const currentIndex = index === -1 ? 0 : index;
 
     const findNext = (start: number) => {
       for (let i = start + 1; i < visibleItems.length; i++) {
         if (!visibleItems[i].disabled) return i;
       }
-      return commandIndex;
+      return currentIndex;
     };
 
     const findPrev = (start: number) => {
       for (let i = start - 1; i >= 0; i--) {
         if (!visibleItems[i].disabled) return i;
       }
-      return commandIndex;
+      return currentIndex;
     };
 
     if (e.key === 'ArrowDown') {
       e.preventDefault();
-      const next = commandIndex === -1 ? 0 : findNext(commandIndex);
-      activeIndex.set(next);
+      const next = findNext(currentIndex);
+      activeItemId.set(visibleItems[next].id);
+
     }
 
     if (e.key === 'ArrowUp') {
       e.preventDefault();
-      const prev = findPrev(commandIndex);
-      activeIndex.set(prev);
+      const prev = findPrev(currentIndex);
+      activeItemId.set(visibleItems[prev].id);
     }
   }
   
@@ -61,7 +66,7 @@
 </div>
 
 <div class="my-3">
-  {$activeIndex}
+  {$activeItemId?.toString()}
 </div>
 
 <style lang="scss">

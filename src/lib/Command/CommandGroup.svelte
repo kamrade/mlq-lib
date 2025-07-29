@@ -1,13 +1,14 @@
 <script lang="ts">
   import type { ICommandGroupProps } from './Command.types';
-
   let { heading, children } : ICommandGroupProps = $props();
 </script>
+
 
 <div class="CommandGroup">
   <div class="CommandGroup-heading">{heading}</div>
   {@render children()}
 </div>
+
 
 <style lang="scss">
   

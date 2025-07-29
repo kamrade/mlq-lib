@@ -1,17 +1,20 @@
 <script lang="ts">
   import { setContext } from 'svelte';
   import { writable, get } from 'svelte/store';
-  import type { ICommandRootProps, CommandItemEntry } from './Command.types';
+  import type { ICommandRootProps, CommandItemEntry, ICommandItems } from './Command.types';
 
   let { classNames, children }: ICommandRootProps = $props();
 
+  let rootEl: HTMLDivElement;
   const items = writable<CommandItemEntry[]>([]);
-  // const activeIndex = writable(0);
-  const activeItemId = writable<symbol | null>(null);
-  const searchQuery = writable('');
-  setContext('command-items', { items, activeItemId, searchQuery });
-
   let visibleItems = $state<CommandItemEntry[]>([]);
+  const activeItemId = writable<symbol>();
+  const searchQuery = writable('');
+  setContext<ICommandItems>('command-items', {
+    items,          // список всех зарегистрированных children CommandItem
+    activeItemId,   // ID текущего выбранного
+    searchQuery     // строка поиска
+  });
 
   $effect(() => {
     visibleItems = $items.filter(i => {
@@ -20,11 +23,7 @@
     });
   });
 
-  let rootEl: HTMLDivElement;
-
   function handleKeydown(e: KeyboardEvent) {
-    
-    // const commandIndex = get(activeIndex);
 
     if (!visibleItems.length) return;
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CommandRoot, CommandInput, CommandList, CommandGroup, CommandItem } from '@lib';
+  import { CommandRoot, CommandInput, CommandList, CommandGroup, CommandItem, TextInputMilk } from '@lib';
   import { CalendarLineBusiness, UserSmileLineUserFaces } from 'svelte-remix';
   import type { Snippet } from 'svelte';
 
@@ -37,3 +37,5 @@
   </CommandList>
 
 </CommandRoot>
+
+<TextInputMilk id="new-100" placeholder="New item" size="lg"/>

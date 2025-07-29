@@ -1,72 +1,63 @@
 <script lang="ts">
   import { getContext, onMount, onDestroy } from 'svelte';
-  import { derived, get, type Writable } from 'svelte/store';
-  import type { ICommandItemProps, CommandItemEntry } from './Command.types';
+  import { derived, type Writable } from 'svelte/store';
+  import type { ICommandItemProps, CommandItemEntry, ICommandItems } from './Command.types';
   import { addItemSorted } from './Command.utils';
 
-
   let { disabled, children } : ICommandItemProps = $props();
-
-  const { items, activeItemId, searchQuery }: {
-    items: Writable<CommandItemEntry[]>;
-    activeItemId: Writable<symbol>;
-    searchQuery: Writable<string>;
-  } = getContext('command-items');
-
-  // const { searchQuery } = getContext('command-items');
-
+  let el: HTMLElement;
+  const itemId = Symbol();
   let textContent = $state('');
-  let shouldShow = $state(false);
+  let shouldShow = $state(true);
+  const { items, activeItemId, searchQuery }: ICommandItems = getContext('command-items');
+  const { commandGroupItemsVisibility }: { commandGroupItemsVisibility: Writable<Record<symbol, boolean>>} = getContext('command-group-visibility');
 
+  // Определяем нужно ли отображать элемент согласно searchQuery
   $effect(() => {
     textContent = el?.textContent?.toLowerCase().trim() || '';
     shouldShow = !$searchQuery || textContent.includes($searchQuery);
-  })
-
-  let el: HTMLElement;
-  const id = Symbol();
+    // Этот блок передает в группу объект со значениями [id]: visible (для каждого CommandItem)
+    commandGroupItemsVisibility.update((recs) => ({ ...recs, [itemId]: shouldShow }));
+  });
 
   onMount(() => {
-    items.update(list => addItemSorted(list, { el, id, disabled: !!disabled }));
+    // Добавляем элемент в Root state
+    items.update(list => addItemSorted(list, { el, id: itemId, disabled: !!disabled }));
   });
 
   onDestroy(() => {
-    items.update(list => list.filter(item => item.id !== id));
+    // Непонятно нахрена это здесь. Это обновляет Root state зачем-то
+    items.update(list => list.filter(item => item.id !== itemId));
   });
 
-  // Реактивный индекс
-  const myIndex = derived(items, $items =>
-    $items.findIndex(item => item.id === id)
-  );
-
-  const isActive = derived(activeItemId, $id => $id === id);
+  // Вычисляем активный это элемент или нет
+  const isActive = derived(activeItemId, $itemId => $itemId === itemId);
 
   function handleClick() {
     if (disabled) return;
-    activeItemId.set(id);
+    activeItemId.set(itemId);
   }
 
+  // Это не тестировалось еще TODO: to test
   $effect(() => {
     if ($isActive) {
       el.scrollIntoView({ block: 'nearest' });
     }
   });
 
-  
+  const handleKeyDown = () => { return 0; }
   
 </script>
 
 <div 
   bind:this={el}
   onclick={handleClick}
-  onkeydown={() => {
-    return 0;
-  }}
+  onkeydown={handleKeyDown}
   class={`CommandItem ${disabled ? 'disabled' : ''}`} 
   class:active={$isActive}
   class:hidden={!shouldShow}
   role="option" 
-  tabindex="0"
+  tabindex="-1"
   aria-selected={$isActive}
   data-command-item 
   data-selected

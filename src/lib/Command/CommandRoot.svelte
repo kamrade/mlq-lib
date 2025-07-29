@@ -64,10 +64,6 @@
   {@render children()}
 </div>
 
-<div class="my-3">
-  {$activeItemId?.toString()}
-</div>
-
 <style lang="scss">
 
   .CommandRoot {

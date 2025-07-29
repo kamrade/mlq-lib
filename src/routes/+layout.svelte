@@ -41,6 +41,7 @@
               <li><a href="/showcase/menu-onclick" class="text-gray-700 hover:underline">Menu on click</a></li>
               
               <li><a href="/showcase/command" class="text-gray-700 hover:underline">Command</a></li>
+              <li><a href="/showcase/command-in-loop" class="text-gray-700 hover:underline">Command in loop</a></li>
             </ul>
           </nav>
         </aside>

@@ -38,4 +38,4 @@
 
 </CommandRoot>
 
-<TextInputMilk id="new-100" placeholder="New item" size="lg"/>
+<TextInputMilk id="new-100" placeholder="Focus on this after press 'Tab'" size="lg"/>

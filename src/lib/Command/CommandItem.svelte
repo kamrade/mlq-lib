@@ -7,10 +7,21 @@
 
   let { disabled, children } : ICommandItemProps = $props();
 
-  const { items, activeIndex }: {
+  const { items, activeIndex, searchQuery }: {
     items: Writable<CommandItemEntry[]>;
     activeIndex: Writable<number>;
+    searchQuery: Writable<string>;
   } = getContext('command-items');
+
+  // const { searchQuery } = getContext('command-items');
+
+  let textContent = $state('');
+  let shouldShow = $state(false);
+
+  $effect(() => {
+    textContent = el?.textContent?.toLowerCase().trim() || '';
+    shouldShow = !$searchQuery || textContent.includes($searchQuery);
+  })
 
   let el: HTMLElement;
   const id = Symbol();
@@ -51,9 +62,12 @@
 <div 
   bind:this={el}
   onclick={handleClick}
-  onkeydown={() => console.log("keydown")}
+  onkeydown={() => {
+    return 0;
+  }}
   class={`CommandItem ${disabled ? 'disabled' : ''}`} 
   class:active={$isActive}
+  class:hidden={!shouldShow}
   role="option" 
   tabindex="0"
   aria-selected={$isActive}
@@ -73,6 +87,10 @@
     cursor: pointer;
     border-radius: var(--item-border-radius);
     transition: background .3s ease-in-out;
+
+    &.hidden {
+      display: none;
+    }
 
     &:focus-visible, &:focus-within {
       outline: none;

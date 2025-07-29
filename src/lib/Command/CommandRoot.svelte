@@ -7,26 +7,36 @@
 
   const items = writable<CommandItemEntry[]>([]);
   const activeIndex = writable(0);
-  setContext('command-items', { items, activeIndex });
+  const searchQuery = writable('');
+  setContext('command-items', { items, activeIndex, searchQuery });
+
+  let visibleItems = $state<CommandItemEntry[]>([]);
+
+  $effect(() => {
+    visibleItems = $items.filter(i => {
+      const text = i.el.textContent?.toLowerCase() || '';
+      return text.includes($searchQuery);
+    });
+  });
 
   let rootEl: HTMLDivElement;
 
   function handleKeydown(e: KeyboardEvent) {
-    const commandItems = get(items);
+    
     const commandIndex = get(activeIndex);
 
-    if (!commandItems.length) return;
+    if (!visibleItems.length) return;
 
     const findNext = (start: number) => {
-      for (let i = start + 1; i < commandItems.length; i++) {
-        if (!commandItems[i].disabled) return i;
+      for (let i = start + 1; i < visibleItems.length; i++) {
+        if (!visibleItems[i].disabled) return i;
       }
       return commandIndex;
     };
 
     const findPrev = (start: number) => {
       for (let i = start - 1; i >= 0; i--) {
-        if (!commandItems[i].disabled) return i;
+        if (!visibleItems[i].disabled) return i;
       }
       return commandIndex;
     };

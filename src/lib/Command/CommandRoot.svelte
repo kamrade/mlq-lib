@@ -56,6 +56,14 @@
       const prev = findPrev(currentIndex);
       activeItemId.set(visibleItems[prev].id);
     }
+
+    if (e.key === 'Enter') {
+    const id = get(activeItemId);
+    const current = get(items).find(item => item.id === id);
+    if (current && current.el && !current.disabled) {
+      current.el.click(); // Имитируем клик по активному CommandItem
+    }
+  }
   }
   
 </script>

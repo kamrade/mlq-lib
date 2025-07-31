@@ -4,7 +4,7 @@
   import type { ICommandItemProps, CommandItemEntry, ICommandItems } from './Command.types';
   import { addItemSorted } from './Command.utils';
 
-  let { disabled, children } : ICommandItemProps = $props();
+  let { disabled, onClick, children } : ICommandItemProps = $props();
   let el: HTMLElement;
   const itemId = Symbol();
   let textContent = $state('');
@@ -12,7 +12,7 @@
   const { items, activeItemId, searchQuery }: ICommandItems = getContext('command-items');
   const { commandGroupItemsVisibility }: { commandGroupItemsVisibility: Writable<Record<symbol, boolean>>} = getContext('command-group-visibility');
 
-  // Определяем нужно ли отображать элемент согласно searchQuery
+  // Определяем нужно ли отображать элемент согласно searchQueryshad
   $effect(() => {
     textContent = el?.textContent?.toLowerCase().trim() || '';
     shouldShow = !$searchQuery || textContent.includes($searchQuery);
@@ -33,9 +33,10 @@
   // Вычисляем активный это элемент или нет
   const isActive = derived(activeItemId, $itemId => $itemId === itemId);
 
-  function handleClick() {
+  function handleClick(e: MouseEvent) {
     if (disabled) return;
     activeItemId.set(itemId);
+    onClick?.(e);
   }
 
   // Это не тестировалось еще TODO: to test
@@ -45,7 +46,12 @@
     }
   });
 
-  const handleKeyDown = () => { return 0; }
+  const handleKeyDown = (e: KeyboardEvent) => {
+    let key = (e.key);
+    if (key === 'Enter') {
+      onClick?.(null);
+    }
+  }
   
 </script>
 

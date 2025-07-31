@@ -17,6 +17,7 @@ export interface ICommandGroupProps {
 
 export interface ICommandItemProps {
   disabled?: boolean;
+  onClick?: (e: MouseEvent | null) => void;
   children: Snippet;
 }
 

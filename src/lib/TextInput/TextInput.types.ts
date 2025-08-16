@@ -22,4 +22,5 @@ export interface ITextInputProps {
   invalid?: boolean;
   style?: string;
   classNames?: string;
+  autoFocus?: boolean;
 }

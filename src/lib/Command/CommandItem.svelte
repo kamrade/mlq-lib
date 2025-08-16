@@ -92,7 +92,7 @@
 
     &.active {
       background: var(--item-active);
-      &:hover {
+      &:not(.disabled):hover {
         background: var(--item-active);
       }
     }

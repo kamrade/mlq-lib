@@ -33,15 +33,22 @@
               <li><a href="/showcase/text-input-milk" class="text-gray-700 hover:underline">Text Input Milk</a></li>
               <li><a href="/showcase/text-input-block" class="text-gray-700 hover:underline">Text Input Block</a></li>
               <li><a href="/showcase/text-input-bindable" class="text-gray-700 hover:underline">Text Input Bindable</a></li>
+              <li><a href="/showcase/text-input-autofocus" class="text-gray-700 hover:underline">Text Input Autofocus</a></li>
+              <li><a href="/showcase/text-input-milk-autofocus" class="text-gray-700 hover:underline">Text Input Milk Autofocus</a></li>
+              <li><a href="/showcase/text-input-block-autofocus" class="text-gray-700 hover:underline">Text Input Block Autofocus</a></li>
               
+              <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Checkbox</li>
               <li><a href="/showcase/checkbox-primitive" class="text-gray-700 hover:underline">Checkbox Primitive</a></li>
               <li><a href="/showcase/checkbox-primitive-form" class="text-gray-700 hover:underline">Checkbox Primitive Form</a></li>
               
+              <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Menu</li>
               <li><a href="/showcase/menu" class="text-gray-700 hover:underline">Menu on hover</a></li>
               <li><a href="/showcase/menu-onclick" class="text-gray-700 hover:underline">Menu on click</a></li>
               
+              <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Command</li>
               <li><a href="/showcase/command" class="text-gray-700 hover:underline">Command</a></li>
               <li><a href="/showcase/command-in-loop" class="text-gray-700 hover:underline">Command in loop</a></li>
+              <li><a href="/showcase/command-in-menu" class="text-gray-700 hover:underline">Command in menu</a></li>
             </ul>
           </nav>
         </aside>

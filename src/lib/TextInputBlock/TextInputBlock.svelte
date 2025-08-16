@@ -3,7 +3,7 @@
   import type { ITextInputBlockProps } from './TextInputBlock.types';
   import { CloseCircleFillSystem } from 'svelte-remix';
 
-  let {  prefix, suffix, clearValue, value = $bindable(), ...rest }: ITextInputBlockProps = $props();
+  let {  prefix, suffix, clearValue, value = $bindable(), placeholder, ...rest }: ITextInputBlockProps = $props();
 
   // Calculate suffix and prefix width
   let prefixEl: HTMLDivElement | null = $state(null);
@@ -34,6 +34,7 @@
   {/if}
   
   <TextInputMilk
+    placeholder={prefixWidth ? placeholder : ''}
     variant="underlined"
     bind:this={textInputRef}
     style={`padding-left: ${prefixWidth + 4}px; padding-right: ${suffixWidth + 4}px;`} 

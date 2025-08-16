@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import type { ITextInputProps } from './TextInput.types';
 
   let {
@@ -17,11 +18,18 @@
     invalid,
     style,
     classNames,
+    autoFocus,
     ...rest
   }: ITextInputProps = $props();
 
   let inputEl: HTMLInputElement;
   export const focus = () => inputEl?.focus();
+
+  onMount(() => {
+    if (autoFocus && inputEl) {
+      inputEl.focus();
+    }
+  })
 
 </script>
 

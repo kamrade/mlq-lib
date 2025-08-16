@@ -11,11 +11,18 @@
   function onInput(e: Event) {
     searchQuery.set(value.toLowerCase().trim());
   }
+
+  interface ICommandInputProps {
+    autoFocus?: boolean;
+  }
+
+  let { autoFocus }: ICommandInputProps = $props();
+
 </script>
 
 
 <div class="CommandInput">  
-  <TextInputBlock size='lg' placeholder="Text Input with snippets" variant="text" onKeyUp={onInput} bind:value type="text">
+  <TextInputBlock {autoFocus} size='lg' placeholder="Text Input with snippets" variant="text" onKeyUp={onInput} bind:value type="text">
     {#snippet prefix()}
       <Search2LineSystem size="1em"/>
     {/snippet}

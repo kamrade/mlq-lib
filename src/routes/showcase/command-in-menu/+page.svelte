@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CommandRoot, CommandInput, CommandList, CommandGroup, CommandItem, TextInputMilk, Menu, ButtonMilk } from '@lib';
+  import { CommandRoot, CommandInput, CommandList, CommandGroup, CommandItem, Menu, ButtonMilk } from '@lib';
   import { groupList } from './data';
 
   let label = "Выберите город";

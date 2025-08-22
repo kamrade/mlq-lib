@@ -1,4 +1,4 @@
-import type { ChangeEventHandler, FocusEventHandler, KeyboardEventHandler } from "svelte/elements";
+import type {ChangeEventHandler, FocusEventHandler, KeyboardEventHandler, MouseEventHandler} from "svelte/elements";
 
 export type TextInputType = "text" | "password";
 
@@ -13,6 +13,7 @@ export interface ITextInputProps {
   onFocus?: FocusEventHandler<HTMLInputElement>;
   onBlur?: FocusEventHandler<HTMLInputElement>;
   onChange?: ChangeEventHandler<HTMLInputElement>;
+  onClick?: MouseEventHandler<HTMLInputElement>;
   placeholder?: string;
   type?: TextInputType;
   disabled?: boolean;

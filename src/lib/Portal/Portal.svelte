@@ -1,7 +1,13 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount, onDestroy, type Snippet } from 'svelte';
 	let ref: Node;
 	let portal: Element | null = null;
+
+	interface IPortalProps {
+		children: Snippet;
+	}
+
+	let { children } : IPortalProps = $props();
 
 	onMount(() => {
 		portal = document.createElement('div');
@@ -19,7 +25,7 @@
 
 <div class="portal-clone">
 	<div bind:this={ref}>
-		<slot />
+		{@render children?.()}
 	</div>
 </div>
 

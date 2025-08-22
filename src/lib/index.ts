@@ -7,5 +7,8 @@ export * from './TextInputBlock';
 export * from './Checkbox';
 export * from './Menu';
 export * from './Command';
+export * from './Portal';
+export * from './Modal';
+export * from './Select';
 
 export * from './utils';

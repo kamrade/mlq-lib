@@ -1,5 +1,6 @@
 <script lang="ts">
   import { TextInputBlock } from '@lib';
+  import type { ITextInputBlockProps } from '@lib/TextInputBlock/TextInputBlock.types';
   import { Search2LineSystem } from 'svelte-remix';
   import { getContext } from 'svelte';
   import { type Writable } from 'svelte/store';
@@ -12,17 +13,28 @@
     searchQuery.set(value.toLowerCase().trim());
   }
 
-  interface ICommandInputProps {
+  interface ICommandInputProps extends ITextInputBlockProps {
     autoFocus?: boolean;
+    visible?: boolean;
+    placeholder?: string;
   }
 
-  let { autoFocus }: ICommandInputProps = $props();
+  let { autoFocus, visible=true, placeholder, ...rest }: ICommandInputProps = $props();
 
 </script>
 
 
-<div class="CommandInput">  
-  <TextInputBlock {autoFocus} size='lg' placeholder="Text Input with snippets" variant="text" onKeyUp={onInput} bind:value type="text">
+<div class={`CommandInput ${visible ? 'visible' : ''}`}>
+  <TextInputBlock
+    readonly={!visible}
+    {autoFocus} 
+    size='lg' 
+    {placeholder}
+    variant="text" 
+    onKeyUp={onInput} 
+    bind:value type="text"
+    {...rest}
+  >
     {#snippet prefix()}
       <Search2LineSystem size="1em"/>
     {/snippet}
@@ -37,5 +49,14 @@
 
   .CommandInput {
     border-bottom: 1px solid var(--border-color);
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+
+    &.visible {
+      opacity: 1;
+      position: relative;
+      z-index: 0;
+    }
   }
 </style>

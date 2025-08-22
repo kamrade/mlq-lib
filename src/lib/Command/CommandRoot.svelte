@@ -78,6 +78,7 @@
     // Root
     --border-color: var(--color-gray-300);
     --border-color-focus: var(--color-gray-400);
+    --background-color: white;
     --outter-padding: 4px;
     --border-radius: 12px;
     --font-size: 1em;
@@ -102,10 +103,13 @@
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     font-size: var(--font-size);
+    background: var(--background-color);
 
     &:focus-visible, &:focus-within {
-      outline: 2px solid var(--border-color-focus);
-      outline-offset: 2px;
+      // outline: 2px solid var(--border-color-focus);
+      // outline-offset: 0px;
+      outline: none;
+      border-color: var(--border-color-focus);
       border-radius: 0.375rem;
     }
   }

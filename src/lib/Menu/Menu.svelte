@@ -7,7 +7,7 @@
   let {
     hideMenu,
     parentElement,
-    menuGap = 4,
+    menuGap = 6,
     appearanceOnHover = false,
     isVisible = false,
     menuElement = $bindable(),
@@ -67,7 +67,7 @@
     tabindex="0"
     onmouseleave={mouseLeaveHandler}
     bind:this={menuElement}
-    class={`Menu`}
+    class="Menu"
     style={`
     top: ${y}px;
     width: ${width ? width + "px" : "auto"};
@@ -81,18 +81,5 @@
 
 
 <style lang="scss">
-  .Menu {
-    position: absolute;
-    z-index: var(--zindex-dropdown);
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    justify-content: space-between;
-    cursor: default;
-  }
+  @use "./Menu.scss";
 </style>

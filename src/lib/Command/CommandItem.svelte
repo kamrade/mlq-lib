@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getContext, onMount, onDestroy } from 'svelte';
   import { derived, type Writable } from 'svelte/store';
-  import type { ICommandItemProps, CommandItemEntry, ICommandItems } from './Command.types';
+  import type { ICommandItemProps, ICommandItems } from './Command.types';
   import { addItemSorted } from './Command.utils';
 
   let { disabled, onClick, children } : ICommandItemProps = $props();

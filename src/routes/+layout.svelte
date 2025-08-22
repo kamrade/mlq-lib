@@ -49,6 +49,13 @@
               <li><a href="/showcase/command" class="text-gray-700 hover:underline">Command</a></li>
               <li><a href="/showcase/command-in-loop" class="text-gray-700 hover:underline">Command in loop</a></li>
               <li><a href="/showcase/command-in-menu" class="text-gray-700 hover:underline">Command in menu</a></li>
+              <li><a href="/showcase/command-select" class="text-gray-700 hover:underline">Select with Command</a></li>
+
+              <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Selects</li>
+              <li><a href="/showcase/select" class="text-gray-700 hover:underline">Select base</a></li>
+
+              <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Dialogs</li>
+              <li><a href="/showcase/modal-base" class="text-gray-700 hover:underline">Modal</a></li>
             </ul>
           </nav>
         </aside>

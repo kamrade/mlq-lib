@@ -8,6 +8,7 @@
     onFocus,
     onBlur,
     onChange,
+    onClick,
     placeholder,
     type = 'text',
     disabled = false,
@@ -42,6 +43,7 @@
   onkeydown={onKeyDown} 
   onkeyup={onKeyUp}
   onchange={onChange}
+  onclick={onClick}
   {type} 
   {placeholder} 
   {disabled} 
@@ -94,7 +96,7 @@
     // Readonly
     --background-readonly: var(--background-disabled);
     --border-color-readonly: var(--border-color);
-    --opacity-readonly: var(--opacity-disabled);
+    --opacity-readonly: 1;
 
     --border-style-readonly: var(--border-style);
     --border-width-readonly: var(--border-width);

@@ -1,7 +1,8 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
   import { browser } from "$app/environment";
-  import { clickOutsideObject, Portal } from "~lib";
+  import { clickOutsideObject } from "@lib";
+  import Portal from '@lib/Portal/Portal.svelte';
 
   export let hideMenu: () => void;
   export let parentElement: HTMLElement | null;
@@ -63,15 +64,13 @@
 <svelte:window bind:innerWidth bind:innerHeight bind:scrollY />
 
 
-
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-
 {#if isVisible}
   <Portal>
     <div
-      on:mouseleave={mouseLeaveHandler}
+      role="none"
+      onmouseleave={mouseLeaveHandler}
       bind:this={menuElement}
-      class={`Menu`}
+      class="Menu"
       style={`
       left: ${x}px;
       top: ${y}px;
@@ -89,18 +88,6 @@
 <style lang="scss">
 	
 	$menu-zindex: var(--zindex-dropdown);
-	
-  .Menu {
-    position: absolute;
-    z-index: $menu-zindex;
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    justify-content: space-between;
-  }
+
+  @use "./Menu.scss";
 </style>

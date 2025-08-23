@@ -11,7 +11,11 @@
 </script>
 
 <div class="mb-3">
-  <Select placeholder="Enter City" options={data.selectData} bind:value={value_first} />
+  <Select fullWidthMenu placeholder="Enter City" options={data.selectData} bind:value={value_first} />
+</div>
+
+<div class="mb-3">
+  <Select menuMaxHeight={200} fullWidthMenu placeholder="Enter City" options={data.selectData} bind:value={value_first} />
 </div>
 
 <div class="mb-3">

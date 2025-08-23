@@ -3,24 +3,20 @@
   import { writable, get } from 'svelte/store';
   import type { ICommandRootProps, CommandItemEntry, ICommandItems } from './Command.types';
 
-  let { classNames, children }: ICommandRootProps = $props();
+  let { classNames, maxHeight, children }: ICommandRootProps = $props();
 
   let rootEl: HTMLDivElement;
   const items = writable<CommandItemEntry[]>([]);
-  let visibleItems = $state<CommandItemEntry[]>([]);
+  let visibleItems = $derived($items.filter(i => {
+    const text = i.el.textContent?.toLowerCase() || '';
+    return text.includes($searchQuery);
+  }));
   const activeItemId = writable<symbol>();
   const searchQuery = writable('');
   setContext<ICommandItems>('command-items', {
     items,          // список всех зарегистрированных children CommandItem
     activeItemId,   // ID текущего выбранного
     searchQuery     // строка поиска
-  });
-
-  $effect(() => {
-    visibleItems = $items.filter(i => {
-      const text = i.el.textContent?.toLowerCase() || '';
-      return text.includes($searchQuery);
-    });
   });
 
   function handleKeydown(e: KeyboardEvent) {
@@ -68,7 +64,14 @@
   
 </script>
 
-<div class={`CommandRoot ${classNames}`} bind:this={rootEl} tabindex="0" onkeydown={handleKeydown} role="listbox">
+<div
+  class={`CommandRoot ${classNames}`}
+  bind:this={rootEl}
+  tabindex="0"
+  onkeydown={handleKeydown}
+  role="listbox"
+  style={`${maxHeight ? `max-height: ${maxHeight}px; overflow-y: auto;` : ''}`}
+>
   {@render children()}
 </div>
 

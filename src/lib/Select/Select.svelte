@@ -23,7 +23,16 @@
     type TextInputInstance
   } from '@lib';
 
-  let { options, value = $bindable(), placeholder, disabled }: ISelectProps = $props();
+  let {
+    options,
+    value = $bindable(),
+    placeholder,
+    disabled,
+    fullWidthMenu,
+    minWidthMenu,
+    menuGap,
+    menuMaxHeight
+  }: ISelectProps = $props();
 
   let currentTitle = $derived<string>(value.title);
   let menuWrapperElementHover = $state<HTMLDivElement | null>(null);
@@ -120,11 +129,14 @@
     isVisible={isMenuVisible}
     hideMenu={hideHoverMenu}
     parentElement={menuWrapperElementHover}
-    minWidth={500}
+    minWidth={minWidthMenu}
+    fullWidth={fullWidthMenu}
     {contentHeight}
+    {menuGap}
+    maxHeight={menuMaxHeight}
   >
     <div class="menu" bind:this={menu}>
-      <CommandRoot>
+      <CommandRoot maxHeight={menuMaxHeight}>
         <CommandInput onKeyDown={handleCommandInputKeyDown} autoFocus={true} visible={true} placeholder={placeholder} ></CommandInput>
         <CommandList>
           {#each options as option (option.heading)}

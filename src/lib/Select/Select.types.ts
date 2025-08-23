@@ -13,4 +13,8 @@ export interface ISelectProps {
   value: ISelectItem;
   placeholder?: string;
   disabled?: boolean;
+  fullWidthMenu?: boolean;
+  minWidthMenu?: number;
+  menuGap?: number;
+  menuMaxHeight?: number;
 }

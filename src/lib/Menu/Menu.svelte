@@ -13,7 +13,8 @@
     menuElement = $bindable(),
     maxHeight = 200,
     width = 0,
-    minWidth = 0,
+    fullWidth,
+    minWidth = 320,
     contentHeight = 0,
     children
   }: IMenuProps = $props();
@@ -70,7 +71,7 @@
     class="Menu"
     style={`
     top: ${y}px;
-    width: ${width ? width + "px" : "auto"};
+    width: ${fullWidth ? '100%' : width ? width + "px" : "auto"};
     min-width: ${minWidth ? minWidth + "px" : "auto"};
     max-height: ${maxHeight}px;
     height: ${contentHeight}px`}

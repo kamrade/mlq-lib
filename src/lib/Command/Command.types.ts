@@ -4,6 +4,7 @@ import { type Writable } from 'svelte/store';
 export interface ICommandRootProps {
   classNames?: string;
   children: Snippet;
+  maxHeight?: number;
 }
 
 export interface ICommandListProps {

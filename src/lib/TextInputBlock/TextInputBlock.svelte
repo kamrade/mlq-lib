@@ -3,26 +3,35 @@
   import type { ITextInputBlockProps } from './TextInputBlock.types';
   import { CloseCircleFillSystem } from 'svelte-remix';
 
-  let {  prefix, suffix, clearValue, value = $bindable(), placeholder, ...rest }: ITextInputBlockProps = $props();
+  let {
+    prefix,
+    suffix,
+    disabled,
+    clearValue,
+    value = $bindable(),
+    placeholder,
+    variant = 'contained',
+    onClear,
+    pseudoFocus,
+    ...rest
+  }: ITextInputBlockProps = $props();
 
   // Calculate suffix and prefix width
-  let prefixEl: HTMLDivElement | null = $state(null);
-  let prefixWidth = $state(0);
+  let prefixEl = $state<HTMLDivElement | null>(null);
+  let prefixWidth = $derived(prefixEl?.getBoundingClientRect().width || 0);
 
-  let suffixEl: HTMLDivElement | null = $state(null);
-  let suffixWidth = $state(0);
-
-  $effect(() => {
-    prefixWidth = prefixEl?.getBoundingClientRect().width || 0;
-  });
-
-  $effect(() => {
-    suffixWidth = suffixEl?.getBoundingClientRect().width || 0;
-  });
+  let suffixEl = $state<HTMLDivElement | null>(null);
+  let suffixWidth = $derived<number>(suffixEl?.getBoundingClientRect().width || 0);
 
   // Прокидываем фокус примитива
   let textInputRef: TextInputInstance;
   export const focus = () => textInputRef.focus();
+
+  const handleClear = () => {
+    value = "";
+    textInputRef.focus();
+    onClear?.();
+  }
 
 </script>
 
@@ -34,16 +43,20 @@
   {/if}
   
   <TextInputMilk
-    placeholder={prefixWidth ? placeholder : ''}
-    variant="underlined"
+    placeholder={prefix ? (prefixWidth !== 0 ? placeholder : '') : placeholder}
+    {variant}
+    {disabled}
     bind:this={textInputRef}
-    style={`padding-left: ${prefixWidth + 4}px; padding-right: ${suffixWidth + 4}px;`} 
+    style={`
+      ${prefix ? `padding-left: ${prefixWidth + 4}px; padding-right: ${suffixWidth + 4}px;` : ``}
+      ${pseudoFocus ? `border-color: var(--border-color-focus)` : ``}
+    `}
     bind:value
     {...rest}
   />
 
-  {#if clearValue && value !== ''}
-    <button type="button" class="clear-value" style={`right: ${suffixWidth + 12}px;`} onclick={() => {value = ""; textInputRef.focus(); }}>
+  {#if clearValue && !disabled && value !== ''}
+    <button type="button" class="clear-value" style={`right: ${suffixWidth + 12}px;`} onmouseup={handleClear}>
       <CloseCircleFillSystem size="1em" />
     </button>
   {/if}
@@ -59,6 +72,8 @@
   
   .TextInputBlock {
     position: relative;
+    display: flex;
+    width: 100%;
     
     .prefix, .suffix {
       position: absolute;

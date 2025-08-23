@@ -1,40 +1,24 @@
 <script lang="ts">
-  import { Select, type IGroupData, type ISelectItem } from '@lib';
+  import { Select, type ISelectGroupData, type ISelectItem } from '@lib';
 
-  const groupList: IGroupData[] = [{
-    heading: 'United Kingdom',
-    items: [{
-      title: 'London',
-      value: 'LND'
-    }, {
-      title: 'Birmingham',
-      value: 'BMG'
-    }, {
-      title: 'Liverpool',
-      value: 'LVP'
-    }]
-  }, {
-    heading: 'France',
-    items: [{
-      title: 'Paris',
-      value: 'PRS'
-    }, {
-      title: 'Marcelle',
-      value: 'MRC'
-    }, {
-      title: 'Lion',
-      value: 'LLN'
-    }]
-  }]
+  let { data }: {
+    data: { selectData: ISelectGroupData[] }
+  } = $props();
 
-  let value: (ISelectItem) = $state({
-    title: 'London',
-    value: 'LND'
-  });
+  let value_first: (ISelectItem) = $state(data.selectData[0].items[0]);
+  let value_second: (ISelectItem) = $state(data.selectData[0].items[0]);
 
 </script>
 
 <div class="mb-3">
-  <Select options={groupList} bind:value={value} />
+  <Select placeholder="Enter City" options={data.selectData} bind:value={value_first} />
 </div>
-<p>Value: {value.title} | {value.value}</p>
+
+<div class="mb-3">
+  <Select disabled options={data.selectData} bind:value={value_second} />
+</div>
+
+<div class="mb-3">
+  <p>Value First: {value_first.title} | {value_first.value}</p>
+  <p>Value Second: {value_second.title} | {value_second.value}</p>
+</div>

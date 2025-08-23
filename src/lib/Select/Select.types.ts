@@ -3,13 +3,14 @@ export interface ISelectItem {
   value: string;
 }
 
-export interface IGroupData {
+export interface ISelectGroupData {
   heading: string;
   items: ISelectItem[];
 }
 
 export interface ISelectProps {
-  options: IGroupData[];
+  options: ISelectGroupData[];
   value: ISelectItem;
   placeholder?: string;
+  disabled?: boolean;
 }

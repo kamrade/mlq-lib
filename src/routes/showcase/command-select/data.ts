@@ -3,12 +3,12 @@ export interface ISelectItem {
   value: string;
 }
 
-interface IGroupData {
+interface ISelectGroupData {
   heading: string;
   items: ISelectItem[];
 }
 
-export const groupList: IGroupData[] = [{
+export const groupList: ISelectGroupData[] = [{
   heading: 'United Kingdom',
   items: [{
     title: 'London',

@@ -10,6 +10,7 @@
 <script lang="ts">
 
   import type { ISelectItem, ISelectProps } from './Select.types';
+  import { ArrowDownSLineArrows } from 'svelte-remix';
 
   import {
     CommandRoot,
@@ -18,25 +19,25 @@
     CommandItem,
     CommandInput,
     Menu,
-    TextInputMilk,
-    type TextInputInstance,
+    TextInputBlock,
+    type TextInputInstance
   } from '@lib';
 
-  let { options, value = $bindable(), placeholder }: ISelectProps = $props();
+  let { options, value = $bindable(), placeholder, disabled }: ISelectProps = $props();
 
   let currentTitle = $derived<string>(value.title);
   let menuWrapperElementHover = $state<HTMLDivElement | null>(null);
-  let isHoverMenuVisible = $state<boolean>(false);
+  let isMenuVisible = $state<boolean>(false);
   let menuHoverElement = $state<HTMLDivElement | null>(null);
   let menu = $state<HTMLDivElement | null>(null);
   let contentHeight = $derived( menu?.getBoundingClientRect().height || 0);
   let textInputBlock: TextInputInstance;
 
-  const showHoverMenu = () => (isHoverMenuVisible = true);
-  const hideHoverMenu = () => (isHoverMenuVisible = false);
+  const showHoverMenu = () => (isMenuVisible = true);
+  const hideHoverMenu = () => (isMenuVisible = false);
 
   const mouseEnterHandler = () => {
-    if (!isHoverMenuVisible) {
+    if (!isMenuVisible) {
       showHoverMenu();
     }
   };
@@ -59,7 +60,7 @@
       textInputBlock.focus();
       hideHoverMenu();
     } else if (e.key === 'Escape') {
-      if (isHoverMenuVisible) {
+      if (isMenuVisible) {
         textInputBlock.focus();
         hideHoverMenu();
       }
@@ -67,15 +68,20 @@
   }
 
   const handleControlKeyDown = (e: KeyboardEvent) => {
-    if ((e.key === "Enter" || e.key === "Escape") && !isHoverMenuVisible) {
+    if ((e.key === "Enter" || e.key === "Escape") && !isMenuVisible) {
       showHoverMenu();
     }
   }
 
   const handleControlClick = () => {
-    if (!isHoverMenuVisible) {
+    if (!isMenuVisible) {
       showHoverMenu();
     }
+  }
+
+  const handleClear = () => {
+    console.log('clear');
+    hideHoverMenu();
   }
 
 
@@ -83,31 +89,39 @@
 
 <h2 class="text-2xl font-medium mb-4">Select</h2>
 
-<div class={`dropdown-toggler ${isHoverMenuVisible ? "dropdown-toggler-hover" : ""}`}
-     bind:this={menuWrapperElementHover}
-     role="button" tabindex="-1"
+<div class={`dropdown-toggler ${isMenuVisible ? "dropdown-toggler-hover" : ""}`}
+   bind:this={menuWrapperElementHover}
 >
 
-  <TextInputMilk
-      readonly
-      onFocus={mouseEnterHandler}
-      onKeyDown={handleControlKeyDown}
-      onClick={handleControlClick}
-      variant="contained"
-      size="lg"
-      placeholder="Select a city"
-      bind:value={currentTitle}
-      bind:this={textInputBlock}
-  />
+  <TextInputBlock
+    {disabled}
+    readonly
+    onFocus={mouseEnterHandler}
+    onKeyDown={handleControlKeyDown}
+    onClick={handleControlClick}
+    onClear={handleClear}
+    pseudoFocus={isMenuVisible}
+
+    variant="contained"
+    size="lg"
+    placeholder={placeholder}
+    clearValue
+    bind:value={currentTitle}
+    bind:this={textInputBlock}
+  >
+    {#snippet suffix()}
+      <ArrowDownSLineArrows size="1em" onclick={handleControlClick} />
+    {/snippet}
+  </TextInputBlock>
 
   <Menu
-      bind:menuElement={menuHoverElement}
-      appearanceOnHover={false}
-      isVisible={isHoverMenuVisible}
-      hideMenu={hideHoverMenu}
-      parentElement={menuWrapperElementHover}
-      minWidth={500}
-      {contentHeight}
+    bind:menuElement={menuHoverElement}
+    appearanceOnHover={false}
+    isVisible={isMenuVisible}
+    hideMenu={hideHoverMenu}
+    parentElement={menuWrapperElementHover}
+    minWidth={500}
+    {contentHeight}
   >
     <div class="menu" bind:this={menu}>
       <CommandRoot>
@@ -136,6 +150,7 @@
     padding: 0;
     margin: 0 0 1rem;
     display: flex;
+    width: 100%;
     position: relative;
 
     &:hover {

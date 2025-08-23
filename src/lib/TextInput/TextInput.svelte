@@ -60,8 +60,8 @@
     --transition: border-color .25s ease-in-out;
 
     // Base size
-    --padding-y: 8px;
-    --padding-x: 8px;
+    --padding-y: 7px;
+    --padding-x: 12px;
     --font-size: 16px;
     --line-height: 1.5;
     --border-radius: 8px;
@@ -76,15 +76,15 @@
 
     // Base colors
     --focus-shadow: var(--border-color-focus);
-    --text-color: #26272B;
+    --text-color: var(--color-gray-900);
     --background-color: white;
-    --border-color: #D3D5DC;
-    --border-color-focus: #151617;
+    --border-color: var(--color-gray-400);
+    --border-color-focus: var(--color-gray-900);
     
     // Disabled
-    --background-disabled: var(--background-color);
+    --background-disabled: var(--color-gray-100);
     --border-color-disabled: var(--border-color);
-    --opacity-disabled: 0.6;
+    --opacity-disabled: 0.8;
 
     --border-style-disabled: var(--border-style);
     --border-width-disabled: var(--border-width);
@@ -94,7 +94,7 @@
     --border-right-width-disabled: var(--border-width-disabled);
 
     // Readonly
-    --background-readonly: var(--background-disabled);
+    --background-readonly: var(--background-color);
     --border-color-readonly: var(--border-color);
     --opacity-readonly: 1;
 
@@ -141,17 +141,7 @@
     }
 
     &::placeholder {
-      color:#9C9EA3;
-    }
-
-    &:disabled {
-      background: var(--background-disabled);
-      opacity: var(--opacity-disabled);
-      border: var(--border-width-disabled) var(--border-style-disabled) var(--border-color-disabled);
-      border-top-width: var(--border-top-width-disabled);
-      border-bottom-width: var(--border-bottom-width-disabled);
-      border-right-width: var(--border-right-width-disabled);
-      border-left-width: var(--border-left-width-disabled);
+      color: var(--color-gray-500);
     }
 
     &:read-only {
@@ -162,6 +152,16 @@
       border-bottom-width: var(--border-bottom-width-readonly);
       border-right-width: var(--border-right-width-readonly);
       border-left-width: var(--border-left-width-readonly);
+    }
+
+    &:disabled {
+      background: var(--background-disabled);
+      opacity: var(--opacity-disabled);
+      border: var(--border-width-disabled) var(--border-style-disabled) var(--border-color-disabled);
+      border-top-width: var(--border-top-width-disabled);
+      border-bottom-width: var(--border-bottom-width-disabled);
+      border-right-width: var(--border-right-width-disabled);
+      border-left-width: var(--border-left-width-disabled);
     }
 
     &.invalid {

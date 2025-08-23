@@ -5,4 +5,6 @@ export interface ITextInputBlockProps extends ITextInputMilkProps {
   prefix?: Snippet;
   suffix?: Snippet;
   clearValue?: boolean;
+  onClear?: () => void;
+  pseudoFocus?: boolean;
 }

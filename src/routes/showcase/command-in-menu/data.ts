@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte';
 
-interface IGroupData {
+interface ISelectGroupData {
   heading: string;
   content: Snippet;
 }

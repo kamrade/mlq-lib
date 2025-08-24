@@ -18,8 +18,8 @@
     <div class="container mx-auto">
       <div class="flex flex-1">
         <!-- Sidebar -->
-        <aside class="w-64 py-4 hidden md:block">
-          <nav>
+        <aside class="w-96 py-4 hidden md:block">
+          <nav class="navigation">
             <ul class="space-y-2">
               <li class="text-xs uppercase tracking-wider text-gray-500 font-medium">Button</li>
               <li><a href="/showcase/button-primitive" class="text-gray-700 hover:underline">Button Primitive</a></li>
@@ -56,6 +56,9 @@
 
               <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Dialogs</li>
               <li><a href="/showcase/modal-base" class="text-gray-700 hover:underline">Modal</a></li>
+
+              <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Icons</li>
+              <li><a href="/showcase/icon-loading-animation" class="text-gray-700 hover:underline">Icon Loading Animation</a></li>
             </ul>
           </nav>
         </aside>
@@ -69,3 +72,13 @@
   
   </div>
 </div>
+
+<style lang="scss">
+  .navigation {
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 1.5rem;
+    border: 1px solid var(--color-gray-400);
+    border-radius: 12px;
+  }
+</style>

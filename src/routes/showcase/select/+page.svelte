@@ -10,17 +10,22 @@
 
 </script>
 
-<div class="mb-3">
+<div class="mb-6">
+  <h3 class="text-2xl font-medium mb-4">Select base</h3>
   <Select fullWidthMenu placeholder="Enter City" options={data.selectData} bind:value={value_first} />
 </div>
 
-<div class="mb-3">
+<div class="mb-6">
+  <h3 class="text-2xl font-medium mb-4">Select with dropdown with scroll</h3>
   <Select menuMaxHeight={200} fullWidthMenu placeholder="Enter City" options={data.selectData} bind:value={value_first} />
 </div>
 
-<div class="mb-3">
+<div class="mb-6">
+  <h3 class="text-2xl font-medium mb-4">Disabled Select</h3>
   <Select disabled options={data.selectData} bind:value={value_second} />
 </div>
+
+<hr class="my-8 border-0 border-t border-gray-400" />
 
 <div class="mb-3">
   <p>Value First: {value_first.title} | {value_first.value}</p>

@@ -96,8 +96,6 @@
 
 </script>
 
-<h2 class="text-2xl font-medium mb-4">Select</h2>
-
 <div class={`dropdown-toggler ${isMenuVisible ? "dropdown-toggler-hover" : ""}`}
    bind:this={menuWrapperElementHover}
 >

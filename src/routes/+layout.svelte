@@ -62,6 +62,7 @@
               <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Selects</li>
               <li><a href="/showcase/select" class="text-gray-700 hover:underline">Select base</a></li>
               <li><a href="/showcase/select-loading" class="text-gray-700 hover:underline">Select loading</a></li>
+              <li><a href="/showcase/select-inner-loading" class="text-gray-700 hover:underline">Select inner loading</a></li>
 
               <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Dialogs</li>
               <li><a href="/showcase/modal-base" class="text-gray-700 hover:underline">Modal</a></li>

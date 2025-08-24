@@ -4,7 +4,7 @@
 
 <script lang="ts">
 
-  import type { ISelectItem, ISelectProps } from './Select.types';
+  import type {ISelectGroupData, ISelectItem, ISelectProps} from './Select.types';
   import { ArrowDownSLineArrows } from 'svelte-remix';
 
   import {
@@ -15,7 +15,9 @@
     CommandInput,
     Menu,
     TextInputBlock,
-    type TextInputInstance
+    type TextInputInstance,
+    isPromise,
+    IconLoading
   } from '@lib';
 
   let {
@@ -36,6 +38,22 @@
   let menu = $state<HTMLDivElement | null>(null);
   let contentHeight = $derived( menu?.getBoundingClientRect().height || 0);
   let textInputBlock: TextInputInstance;
+
+  // Определяем тип options - Promise или значение
+  let innerOptions = $state<ISelectGroupData[]>([]);
+  let isLoadingOptions = $state(true);
+
+  const o = options;
+  if (isPromise<ISelectGroupData[]>(o)) {
+    isLoadingOptions = true;
+    o.then((opt: ISelectGroupData[]) => {
+      innerOptions = opt ;
+      isLoadingOptions = false;
+    });
+  } else {
+    innerOptions = o as ISelectGroupData[];
+    isLoadingOptions = false;
+  }
 
   const showHoverMenu = () => (isMenuVisible = true);
   const hideHoverMenu = () => (isMenuVisible = false);
@@ -88,7 +106,6 @@
     value = null;
   }
 
-
 </script>
 
 <div class={`dropdown-toggler ${isMenuVisible ? "dropdown-toggler-hover" : ""}`}
@@ -96,7 +113,7 @@
 >
 
   <TextInputBlock
-    {disabled}
+    disabled={disabled || isLoadingOptions}
     readonly
     onFocus={mouseEnterHandler}
     onKeyDown={handleControlKeyDown}
@@ -112,7 +129,12 @@
     bind:this={textInputBlock}
   >
     {#snippet suffix()}
-      <ArrowDownSLineArrows size="1em" onclick={handleControlClick} />
+      <div class="flex items-center gap-3">
+        {#if isLoadingOptions}
+          <IconLoading/>
+        {/if}
+        <ArrowDownSLineArrows size="1em" onclick={handleControlClick} />
+      </div>
     {/snippet}
   </TextInputBlock>
 
@@ -132,13 +154,17 @@
       <CommandRoot maxHeight={menuMaxHeight}>
         <CommandInput onKeyDown={handleCommandInputKeyDown} autoFocus={true} visible={true} placeholder={placeholder} ></CommandInput>
         <CommandList>
-          {#each options as option (option.heading)}
-            <CommandGroup heading={option.heading}>
-              {#each option.items as item (item.value)}
-                <CommandItem onClick={ () => handleItemClick(item) }>{item.title}</CommandItem>
-              {/each}
-            </CommandGroup>
-          {/each}
+          {#if isLoadingOptions}
+            Loading
+          {:else}
+            {#each innerOptions as option (option.heading)}
+              <CommandGroup heading={option.heading}>
+                {#each option.items as item (item.value)}
+                  <CommandItem onClick={ () => handleItemClick(item) }>{item.title}</CommandItem>
+                {/each}
+              </CommandGroup>
+            {/each}
+          {/if}
         </CommandList>
 
       </CommandRoot>

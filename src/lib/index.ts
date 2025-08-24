@@ -10,5 +10,6 @@ export * from './Command';
 export * from './Portal';
 export * from './Modal';
 export * from './Select';
+export * from './Icon';
 
 export * from './utils';

@@ -1,6 +1,8 @@
 <script lang="ts">
+  import { navigating } from '$app/state';
   let { children } = $props();
   import '../styles/index.css';
+
 </script>
 
 
@@ -8,10 +10,16 @@
 <div class="onest-font">
   <div class="min-h-screen flex flex-col">
 
+
     <!-- Header -->
     <header class="bg-gray-800 text-white p-2">
       <div class="container mx-auto">
-        <h1 class="text-xl font-medium uppercase tracking-widest">Milk KIT</h1>
+        <div class="flex gap-6">
+          <h1 class="text-xl font-medium uppercase tracking-widest">Milk KIT</h1>
+          {#if navigating.to}
+            <p class="text-gray-600">Loading</p>
+          {/if}
+        </div>
       </div>
     </header>
 
@@ -53,6 +61,7 @@
 
               <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Selects</li>
               <li><a href="/showcase/select" class="text-gray-700 hover:underline">Select base</a></li>
+              <li><a href="/showcase/select-loading" class="text-gray-700 hover:underline">Select loading</a></li>
 
               <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Dialogs</li>
               <li><a href="/showcase/modal-base" class="text-gray-700 hover:underline">Modal</a></li>

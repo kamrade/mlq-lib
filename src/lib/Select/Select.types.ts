@@ -10,7 +10,7 @@ export interface ISelectGroupData {
 
 export interface ISelectProps {
   options: ISelectGroupData[];
-  value: ISelectItem;
+  value: ISelectItem | null;
   placeholder?: string;
   disabled?: boolean;
   fullWidthMenu?: boolean;

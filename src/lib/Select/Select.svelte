@@ -1,10 +1,5 @@
 <!--
-
-  - Когда открыто меню - нужно имитировать border-color: focus у inner TextInput
-  + Закрывать / открывать меню по Esc, Enter при TextInput в фокусе
-  + Обрабатывать клик по TextInput как триггер открытия/закрытия меню
-
-
+  Select
 -->
 
 <script lang="ts">
@@ -34,7 +29,7 @@
     menuMaxHeight
   }: ISelectProps = $props();
 
-  let currentTitle = $derived<string>(value.title);
+  let currentTitle = $derived<string>(value?.title || '');
   let menuWrapperElementHover = $state<HTMLDivElement | null>(null);
   let isMenuVisible = $state<boolean>(false);
   let menuHoverElement = $state<HTMLDivElement | null>(null);
@@ -89,8 +84,8 @@
   }
 
   const handleClear = () => {
-    console.log('clear');
     hideHoverMenu();
+    value = null;
   }
 
 

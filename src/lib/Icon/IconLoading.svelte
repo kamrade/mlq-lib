@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
+  let { size=16 }: { size?: number } = $props();
 </script>
 
-<div class="loading-indicator">
+<div class="loading-indicator" style={`font-size: ${size}px;`}>
   <span class="loading-indicator-item item-1"></span>
   <span class="loading-indicator-item item-2"></span>
   <span class="loading-indicator-item item-3"></span>
@@ -9,23 +10,28 @@
 
 <style lang="scss">
   .loading-indicator {
-    display: flex;
-    gap: .25rem;
+    display: inline-flex;
+    width: 1em;
+    height: 1em;
+    padding: 0.375em 0;
+    gap: 0.125em;
 
     .loading-indicator-item {
-      width: 6px;
-      height: 6px;
+      width: 0.25em;
+      height: 0.25em;
       background: var(--color-gray-400);
       border-radius: 50%;
+      transform-origin: center;
+      will-change: transform, opacity;
 
       &.item-1 {
-        animation: blink-1 1s ease-in-out 0ms infinite normal none running;
+        animation: blink-1 1s ease-in-out 0ms infinite;
       }
       &.item-2 {
-        animation: blink-1 1s ease-in-out 160ms infinite normal none running;
+        animation: blink-1 1s ease-in-out 160ms infinite;
       }
       &.item-3 {
-        animation: blink-1 1s ease-in-out 320ms infinite normal none running;
+        animation: blink-1 1s ease-in-out 320ms infinite;
       }
     }
   }

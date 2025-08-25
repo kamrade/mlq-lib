@@ -9,7 +9,7 @@ export interface ISelectGroupData {
 }
 
 export interface ISelectProps {
-  options: ISelectGroupData[] | Promise<ISelectGroupData[]>;
+  options: ISelectGroupData[] | Promise<(ISelectGroupData[])>;
   value: ISelectItem | null;
   placeholder?: string;
   disabled?: boolean;

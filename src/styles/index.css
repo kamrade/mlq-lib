@@ -169,3 +169,8 @@
   --text-success-main: #0F9E3C;
   --text-danger-main: #D74D3F;
 }
+
+/* This needed because ButtonMilk is using global classNames and Tailwind does not see that these variables needed */
+/* So I addeded these classNames which are using needed Tailwind CSS variables */
+/* Probably when we add other button themes we will be needed to add more classNames (variables) here */
+@apply bg-yellow-100 bg-yellow-200 bg-yellow-300 bg-yellow-400 bg-yellow-500 bg-yellow-600 bg-yellow-700 bg-yellow-800 bg-yellow-900;

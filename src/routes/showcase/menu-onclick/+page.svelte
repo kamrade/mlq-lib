@@ -6,10 +6,6 @@
 	let menuWrapperElementHover: HTMLDivElement;
 	let isHoverMenuVisible = false;
 	let menuHoverElement: HTMLDivElement;
-	let menu: HTMLDivElement;
-	let contentHeight = 0;
-
-	$: contentHeight = menu?.getBoundingClientRect().height || 0;
 
 	const showHoverMenu = () => (isHoverMenuVisible = true);
 	const hideHoverMenu = () => (isHoverMenuVisible = false);
@@ -20,13 +16,6 @@
 		}
 	};
 
-	const mouseLeaveHoverHandler = (e: MouseEvent) => {
-		let contains = menuHoverElement?.contains(e.relatedTarget as Node);
-		let equal = menuHoverElement === e.relatedTarget;
-		if (!contains && !equal) {
-			hideHoverMenu();
-		}
-	};
 </script>
 
 
@@ -48,14 +37,13 @@
 		hideMenu={hideHoverMenu}
 		parentElement={menuWrapperElementHover}
 		minWidth={500}
-		{contentHeight}
 	>
-		<div class="menu" bind:this={menu}>
-			{#each menuLinks as menuLink}
+		<div class="menu">
+			{#each menuLinks as menuLink (menuLink.link)}
 				{#if typeof menuLink === "string"}
 					<h3 class="sub-title">{menuLink}</h3>
 				{:else}
-					<div onclick={() => alert(menuLink.link)} >
+					<div onclick={() => alert(menuLink.link)} role="listbox" tabindex="-1" onkeydown={() => null} >
 						<div class={menuLinks.length > 1 ? "option-wrapper" : ""}>
 							{menuLink.label}
 						</div>

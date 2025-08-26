@@ -45,32 +45,32 @@
 
 </script>
 
-{#if isVisible}
-  <Portal>
-    <div class="Modal">
-      <div class={`Modal-backdrop ${blackout ? "Modal-backdrop-blackout" : ""}`} ></div>
 
-      <div
-        class="Modal-content"
-        onmouseup={backdropClick}
-        role="dialog"
-        tabindex="-1"
-        aria-label="Close dialog"
-      >
-        {#if showCloseButton}
-          <div class="Modal-close-button-wrapper" role="button" tabindex="-1" onmouseup={() => hideModal()}>
-            <button class="Modal-close-button">
-              <CloseFillSystem/>
-            </button>
-          </div>
-        {/if}
+<Portal>
+  <div class="Modal">
+    <div class={`Modal-backdrop ${blackout ? "Modal-backdrop-blackout" : ""}`} ></div>
 
-        {@render children()}
+    <div
+      class="Modal-content"
+      onmouseup={backdropClick}
+      role="dialog"
+      tabindex="-1"
+      aria-label="Close dialog"
+    >
+      {#if showCloseButton}
+        <div class="Modal-close-button-wrapper" role="button" tabindex="-1" onmouseup={() => hideModal()}>
+          <button class="Modal-close-button">
+            <CloseFillSystem/>
+          </button>
+        </div>
+      {/if}
 
-      </div>
+      {@render children()}
+
     </div>
-  </Portal>
-{/if}
+  </div>
+</Portal>
+
 
 <style lang="scss">
   .Modal-backdrop {

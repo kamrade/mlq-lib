@@ -52,6 +52,7 @@
               <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Menu</li>
               <li><a href="/showcase/menu" class="text-gray-700 hover:underline">Menu on hover</a></li>
               <li><a href="/showcase/menu-onclick" class="text-gray-700 hover:underline">Menu on click</a></li>
+              <li><a href="/showcase/menu-portal" class="text-gray-700 hover:underline">Menu Portal</a></li>
               
               <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Command</li>
               <li><a href="/showcase/command" class="text-gray-700 hover:underline">Command</a></li>
@@ -87,10 +88,7 @@
 
 <style lang="scss">
   .navigation {
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 1.5rem;
-    border: 1px solid var(--color-gray-400);
-    border-radius: 12px;
+    padding: 0 0 0 1.5rem;
+    border-right: 1px solid var(--color-gray-400);
   }
 </style>

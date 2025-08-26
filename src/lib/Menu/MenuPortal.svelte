@@ -2,43 +2,45 @@
   import { onMount, onDestroy } from "svelte";
   import { browser } from "$app/environment";
   import { clickOutsideObject } from "@lib";
+  import type { IMenuProps } from "./Menu.types";
   import Portal from '@lib/Portal/Portal.svelte';
 
-  export let hideMenu: () => void;
-  export let parentElement: HTMLElement | null;
-  export let menuGap = 0;
-  export let appearanceOnHover = false;
-  export let isVisible = false;
-  export let menuElement: HTMLDivElement | null = null;
-  export let maxHeight = 200;
-  export let width = 0;
-  export let minWidth = 0;
-  export let contentHeight = 0;
+  let {
+    hideMenu,
+    parentElement,
+    menuGap=6,
+    appearanceOnHover=false,
+    isVisible,
+    menuElement=$bindable(),
+    maxHeight=200,
+    width=0,
+    fullWidth,
+    minWidth=320,
+    id,
+    children
+  }: IMenuProps = $props();
 
-  let x = 0;
-  let y = 0;
-  let height = 0;
+  let y = $state(0);
+  let x = $state(0);
+  let innerWidth = $state(0);
+  let innerHeight = $state(0);
+  let scrollY = $state(0);
 
-  let innerWidth = 0;
-  let innerHeight = 0;
-  let scrollY = 0;
-
+  // calculatePosition calculates differently than in Menu component
   const calculatePosition = (parentEl: HTMLElement | null) => {
     const boundingClientRect = parentEl?.getBoundingClientRect();
-    x = boundingClientRect?.x || 0;
-    y = boundingClientRect?.y || 0;
-    height = boundingClientRect?.height || 0;
-    y = y + height + menuGap + scrollY;
+    x = (boundingClientRect?.x || 0);
+    y = ((boundingClientRect?.y || 0) + (boundingClientRect?.height || 0)) + menuGap;
   };
 
   const mouseLeaveHandler = (e: MouseEvent) => {
-    if (e.relatedTarget !== parentElement && appearanceOnHover) {
+    if ((e.relatedTarget !== parentElement) && appearanceOnHover) {
       hideMenu();
     }
   };
 
   const handleClickOutside = (event: MouseEvent) => {
-    clickOutsideObject(event, menuElement, null, () => hideMenu()); // TODO: Probably we need object as param here
+    clickOutsideObject(event, menuElement as HTMLElement, null, () => hideMenu());
   };
 
   onMount(() => {
@@ -54,11 +56,18 @@
     }
   });
 
-  $: {
+  $effect(() => {
     if (innerWidth && innerHeight) {
       calculatePosition(parentElement);
     }
-  }
+  });
+
+  $effect(() => {
+    if (isVisible) {
+      calculatePosition(parentElement);
+    }
+  });
+
 </script>
 
 <svelte:window bind:innerWidth bind:innerHeight bind:scrollY />
@@ -67,27 +76,26 @@
 {#if isVisible}
   <Portal>
     <div
-      role="none"
+      {id}
+      role="menu"
+      tabindex="0"
       onmouseleave={mouseLeaveHandler}
       bind:this={menuElement}
       class="Menu"
       style={`
-      left: ${x}px;
-      top: ${y}px;
-      width: ${width ? width + "px" : "auto"};
-      min-width: ${minWidth ? minWidth + "px" : "auto"};
-      max-height: ${maxHeight}px;
-      height: ${contentHeight}px`}
+        left: ${x}px;
+        top: ${y}px;
+        width: ${fullWidth ? '100%' : width ? width + "px" : "auto"};
+        min-width: ${minWidth ? minWidth + "px" : "auto"};
+        max-height: ${maxHeight}px;
+      `}
     >
-      <slot />
+      {@render children()}
     </div>
   </Portal>
-{/if} 
+{/if}
 
 
 <style lang="scss">
-	
-	$menu-zindex: var(--zindex-dropdown);
-
   @use "./Menu.scss";
 </style>

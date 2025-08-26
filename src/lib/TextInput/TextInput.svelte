@@ -18,7 +18,7 @@
     value = $bindable(),
     invalid,
     style,
-    classNames,
+    classNames='',
     autoFocus,
     ariaHasPopup,
     ariaExpanded,
@@ -31,7 +31,11 @@
 
   onMount(() => {
     if (autoFocus && inputEl) {
-      inputEl.focus();
+      // Wrapped to setTimeout to correctly autoFocus in modal and conditional rendering
+      setTimeout(() => {
+        inputEl.focus();
+      });
+
     }
   })
 

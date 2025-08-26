@@ -35,17 +35,19 @@
     <Button onClick={() => isModalShowed = !isModalShowed}> Open Modal </Button>
   </div>
 
-  {#if browser}
+  {#if browser && isModalShowed}
     <Modal isVisible={isModalShowed} hideModal={() => isModalShowed = false} showCloseButton={true} hideOnEscape={true} closeOnBackdrop>
       <ModalDialog>
-        Test
-        <TextInput bind:value={textInputValue} placeholder="Your text" bind:this={textInputBlock} autoFocus />
-        <div class="py-2 text-gray-500 text-xs">Current value: {textInputValue}</div>
-        <div class="mb-3">
-          <Select searchable={false} placeholder="Enter Country" options={data.selectData} bind:value={value} />
-        </div>
-        <ButtonMilk size='lg' onClick={() => textInputBlock?.focus()}>Focus</ButtonMilk>
-        <div style="height: 1200px"></div>
+        {#if browser && isModalShowed}
+          <h1>Test title</h1>
+          <TextInput bind:value={textInputValue} placeholder="Your text" bind:this={textInputBlock} autoFocus />
+          <div class="py-2 text-gray-500 text-xs">Current value: {textInputValue}</div>
+          <div class="mb-3">
+            <Select searchable={false} placeholder="Enter Country" options={data.selectData} bind:value={value} />
+          </div>
+          <ButtonMilk size='lg' onClick={() => textInputBlock?.focus()}>Focus</ButtonMilk>
+          <div style="height: 1200px"></div>
+        {/if}
       </ModalDialog>
     </Modal>
   {/if}

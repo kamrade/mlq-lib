@@ -58,6 +58,12 @@
     }
   });
 
+  $effect(() => {
+    if (isVisible) {
+      calculatePosition(parentElement);
+    }
+  });
+
 </script>
 
 <svelte:window bind:innerWidth bind:innerHeight bind:scrollY />

@@ -30,7 +30,7 @@
     {autoFocus} 
     size='lg' 
     {placeholder}
-    variant="text" 
+    variant="text"
     onKeyUp={onInput} 
     bind:value type="text"
     {...rest}
@@ -45,6 +45,7 @@
 <style lang="scss">
   .CommandInput {
     --border-color: var(--color-gray-300);
+    margin-bottom: 0.25rem;
   }
 
   .CommandInput {

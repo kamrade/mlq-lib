@@ -6,19 +6,19 @@
 
   let commandGroupItemsVisibility = writable<Record<symbol, boolean>>({});
   setContext('command-group-visibility', { commandGroupItemsVisibility });
-  let allFalse = $state(false);
-  
-  $effect(() => {
-    allFalse = Object.getOwnPropertySymbols($commandGroupItemsVisibility)
-        .every(sym => $commandGroupItemsVisibility[sym] === false);
-  })
+  let allFalse = $derived(Object.getOwnPropertySymbols($commandGroupItemsVisibility)
+        .every(sym => $commandGroupItemsVisibility[sym] === false));
+
+
 
 </script>
 
 
 
-<div class="CommandGroup" class:hidden={allFalse}>
-  <div class="CommandGroup-heading">{heading}</div>
+<div class="CommandGroup" class:hidden={allFalse} >
+  {#if heading}
+    <div class="CommandGroup-heading">{heading}</div>
+  {/if}
   {@render children()}
 </div>
 
@@ -28,7 +28,6 @@
   
   .CommandGroup {
     padding: var(--group-padding-y) var(--group-padding-x);
-    margin-top: .25em;
     border-bottom: 1px solid var(--border-color);
 
     &.hidden {

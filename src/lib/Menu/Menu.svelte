@@ -15,7 +15,6 @@
     width = 0,
     fullWidth,
     minWidth = 320,
-    contentHeight = 0,
     children
   }: IMenuProps = $props();
 
@@ -70,11 +69,11 @@
     bind:this={menuElement}
     class="Menu"
     style={`
-    top: ${y}px;
-    width: ${fullWidth ? '100%' : width ? width + "px" : "auto"};
-    min-width: ${minWidth ? minWidth + "px" : "auto"};
-    max-height: ${maxHeight}px;
-    height: ${contentHeight}px`}
+      top: ${y}px;
+      width: ${fullWidth ? '100%' : width ? width + "px" : "auto"};
+      min-width: ${minWidth ? minWidth + "px" : "auto"};
+      max-height: ${maxHeight}px;
+    `}
   >
     {@render children()}
   </div>

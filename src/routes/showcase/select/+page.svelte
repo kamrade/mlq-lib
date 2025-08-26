@@ -13,7 +13,7 @@
 
 <div class="mb-6">
   <h3 class="text-2xl font-medium mb-4">Select base</h3>
-  <Select fullWidthMenu placeholder="Enter City" options={data.selectData} bind:value={value_first} />
+  <Select searchable={false} fullWidthMenu placeholder="Enter City" options={data.selectData} bind:value={value_first} />
 </div>
 
 <div class="mb-6">

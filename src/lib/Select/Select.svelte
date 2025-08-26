@@ -16,7 +16,6 @@
     Menu,
     TextInputBlock,
     type TextInputInstance,
-    isPromise,
     IconLoading
   } from '@lib';
 
@@ -28,39 +27,71 @@
     fullWidthMenu,
     minWidthMenu,
     menuGap,
-    menuMaxHeight
+    menuMaxHeight,
+    searchable=true
   }: ISelectProps = $props();
 
   let currentTitle = $derived<string>(value?.title || '');
-  let menuWrapperElementHover = $state<HTMLDivElement | null>(null);
+  // Нужен для того, чтоб позиционировать Menu относительно parent элемента
+  let menuParentElement = $state<HTMLDivElement | null>(null);
   let isMenuVisible = $state<boolean>(false);
-  let menuHoverElement = $state<HTMLDivElement | null>(null);
-  let menu = $state<HTMLDivElement | null>(null);
-  let contentHeight = $derived( menu?.getBoundingClientRect().height || 0);
+
   let textInputBlock: TextInputInstance;
+  let flatSelect = $state<boolean>(false);
+
+  // С помощью этой функции я различаю разные типы options
+  const isGroupArray = (options: ISelectItem[] | ISelectGroupData[]) =>
+    options.length > 0 && "heading" in options[0];
 
   // Определяем тип options - Promise или значение
-  let innerOptions = $state<ISelectGroupData[]>([]);
-  let isLoadingOptions = $state(true);
+  let innerGroupOptions = $state<ISelectGroupData[] | null>(null);
+  let innerOptions = $state<ISelectItem[] | null>(null);
+  let isLoadingOptions = $state(false);
+  let loadError = $state<unknown>(null);
 
-  const o = options;
-  if (isPromise<ISelectGroupData[]>(o)) {
-    isLoadingOptions = true;
-    o.then((opt: ISelectGroupData[]) => {
-      innerOptions = opt ;
-      isLoadingOptions = false;
-    });
-  } else {
-    innerOptions = o as ISelectGroupData[];
+  const normalizeOptions = (opt: ISelectGroupData[] | ISelectItem[]) => {
+    if (isGroupArray(opt)) {
+      innerGroupOptions = opt as ISelectGroupData[];
+      innerOptions = null;
+      flatSelect = false;
+    } else {
+      innerOptions = opt as ISelectItem[];
+      innerGroupOptions = null;
+      flatSelect = true;
+    }
     isLoadingOptions = false;
   }
 
-  const showHoverMenu = () => (isMenuVisible = true);
-  const hideHoverMenu = () => (isMenuVisible = false);
+  let requestId = 0;
+  $effect(() => {
+    const currentId = ++requestId;
+    isLoadingOptions = true;
+
+
+    (async () => {
+      try {
+        const resolved = await options as ISelectItem[] | ISelectGroupData[];
+        // если за это время options сменился — выходим
+        if (currentId !== requestId) return;
+        normalizeOptions(resolved);
+      } catch (err) {
+        if (currentId !== requestId) return;
+        loadError = err;
+        innerOptions = null;
+        innerGroupOptions = null;
+      } finally {
+        if (currentId === requestId) isLoadingOptions = false;
+      }
+    })();
+  });
+
+
+  const showMenu = () => (isMenuVisible = true);
+  const hideMenu = () => (isMenuVisible = false);
 
   const mouseEnterHandler = () => {
     if (!isMenuVisible) {
-      showHoverMenu();
+      showMenu();
     }
   };
 
@@ -74,42 +105,55 @@
       value: item.value
     });
     textInputBlock.focus();
-    hideHoverMenu();
+    hideMenu();
   }
 
   const handleCommandInputKeyDown = (e: KeyboardEvent) => {
+    if (disabled || isLoadingOptions) return;
+
     if (e.key === "Tab") {
       textInputBlock.focus();
-      hideHoverMenu();
+      hideMenu();
     } else if (e.key === 'Escape') {
       if (isMenuVisible) {
         textInputBlock.focus();
-        hideHoverMenu();
+        hideMenu();
       }
     }
   }
 
   const handleControlKeyDown = (e: KeyboardEvent) => {
-    if ((e.key === "Enter" || e.key === "Escape") && !isMenuVisible) {
-      showHoverMenu();
+    switch (e.key) {
+      case 'Enter':
+      case ' ':
+      case 'ArrowDown':
+      case 'ArrowUp': {
+        if (!isMenuVisible) {
+          showMenu();
+          e.preventDefault();
+        }
+        return;
+      }
     }
   }
 
   const handleControlClick = () => {
     if (!isMenuVisible) {
-      showHoverMenu();
+      showMenu();
     }
   }
 
   const handleClear = () => {
-    hideHoverMenu();
+    hideMenu();
     value = null;
   }
 
 </script>
 
 <div class={`dropdown-toggler ${isMenuVisible ? "dropdown-toggler-hover" : ""}`}
-   bind:this={menuWrapperElementHover}
+   bind:this={menuParentElement}
+   aria-haspopup="listbox"
+   aria-expanded={isMenuVisible}
 >
 
   <TextInputBlock
@@ -117,14 +161,12 @@
     readonly
     onFocus={mouseEnterHandler}
     onKeyDown={handleControlKeyDown}
-    onClick={handleControlClick}
     onClear={handleClear}
     pseudoFocus={isMenuVisible}
-
+    onClick={handleControlClick}
     variant="contained"
     size="lg"
     placeholder={placeholder}
-    clearValue
     bind:value={currentTitle}
     bind:this={textInputBlock}
   >
@@ -133,37 +175,51 @@
         {#if isLoadingOptions}
           <IconLoading/>
         {/if}
-        <ArrowDownSLineArrows size="1em" onclick={handleControlClick} />
+        <ArrowDownSLineArrows size="1em" onclick={(e: MouseEvent) => { e.stopPropagation(); handleControlClick(); }} />
       </div>
     {/snippet}
   </TextInputBlock>
 
   <Menu
-    bind:menuElement={menuHoverElement}
+    parentElement={menuParentElement}
     appearanceOnHover={false}
     isVisible={isMenuVisible}
-    hideMenu={hideHoverMenu}
-    parentElement={menuWrapperElementHover}
+    hideMenu={hideMenu}
     minWidth={minWidthMenu}
     fullWidth={fullWidthMenu}
-    {contentHeight}
     {menuGap}
     maxHeight={menuMaxHeight}
   >
-    <div class="menu" bind:this={menu}>
-      <CommandRoot maxHeight={menuMaxHeight}>
-        <CommandInput onKeyDown={handleCommandInputKeyDown} autoFocus={true} visible={true} placeholder={placeholder} ></CommandInput>
+    <div class="menu" role="listbox">
+      <CommandRoot maxHeight={menuMaxHeight} >
+        <CommandInput onKeyDown={handleCommandInputKeyDown} autoFocus={true} visible={searchable} placeholder={placeholder} ></CommandInput>
         <CommandList>
           {#if isLoadingOptions}
-            Loading
+            <div class="px-3 py-2">Loading...</div>
+          {:else if loadError}
+            <div class="px-3 py-2 text-danger">Load options error</div>
           {:else}
-            {#each innerOptions as option (option.heading)}
-              <CommandGroup heading={option.heading}>
-                {#each option.items as item (item.value)}
-                  <CommandItem onClick={ () => handleItemClick(item) }>{item.title}</CommandItem>
+
+            {#if flatSelect}
+              {#if innerOptions}
+                <CommandGroup>
+                  {#each innerOptions as option (option.value)}
+                    <CommandItem onClick={ () => handleItemClick(option) }>{option.title}</CommandItem>
+                  {/each}
+                </CommandGroup>
+              {/if}
+            {:else}
+              {#if innerGroupOptions}
+                {#each innerGroupOptions as option (option.heading)}
+                  <CommandGroup heading={option.heading}>
+                    {#each option.items as item (item.value)}
+                      <CommandItem onClick={ () => handleItemClick(item) }>{item.title}</CommandItem>
+                    {/each}
+                  </CommandGroup>
                 {/each}
-              </CommandGroup>
-            {/each}
+              {/if}
+            {/if}
+
           {/if}
         </CommandList>
 

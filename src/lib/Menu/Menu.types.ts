@@ -10,7 +10,6 @@ export interface IMenuProps {
   maxHeight?: number;
   width?: number;
   minWidth?: number;
-  contentHeight?: number;
   children: Snippet;
   fullWidth?: boolean;
 }

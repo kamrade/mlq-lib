@@ -55,12 +55,14 @@
               
               <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Command</li>
               <li><a href="/showcase/command" class="text-gray-700 hover:underline">Command</a></li>
+              <li><a href="/showcase/command-flat" class="text-gray-700 hover:underline">Command flat</a></li>
               <li><a href="/showcase/command-in-loop" class="text-gray-700 hover:underline">Command in loop</a></li>
               <li><a href="/showcase/command-in-menu" class="text-gray-700 hover:underline">Command in menu</a></li>
               <li><a href="/showcase/command-select" class="text-gray-700 hover:underline">Select with Command</a></li>
 
               <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Selects</li>
               <li><a href="/showcase/select" class="text-gray-700 hover:underline">Select base</a></li>
+              <li><a href="/showcase/select-flat" class="text-gray-700 hover:underline">Select flat</a></li>
               <li><a href="/showcase/select-loading" class="text-gray-700 hover:underline">Select loading</a></li>
               <li><a href="/showcase/select-inner-loading" class="text-gray-700 hover:underline">Select inner loading</a></li>
 

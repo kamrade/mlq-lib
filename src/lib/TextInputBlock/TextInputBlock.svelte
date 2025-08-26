@@ -7,7 +7,6 @@
     prefix,
     suffix,
     disabled,
-    clearValue,
     value = $bindable(),
     placeholder,
     variant = 'contained',
@@ -56,7 +55,7 @@
   />
 
 
-  {#if clearValue && !disabled && value !== ''}
+  {#if handleClear && !disabled && value !== ''}
     <!-- I deliberately excluded this button from tabindex -->
     <button tabindex="-1" type="button" class="clear-value" style={`right: ${suffixWidth + 12}px;`} onmouseup={handleClear}>
       <CloseCircleFillSystem size="1em" />

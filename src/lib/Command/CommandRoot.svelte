@@ -97,7 +97,7 @@
 
     // Group
     --group-heading-color: var(--color-gray-600);
-    --group-padding-y: 4px;
+    --group-padding-y: 0;
     --group-padding-x: 0;
   }
 
@@ -113,7 +113,7 @@
       // outline-offset: 0px;
       outline: none;
       border-color: var(--border-color-focus);
-      border-radius: 0.375rem;
+      //border-radius: 0.375rem;
     }
   }
 

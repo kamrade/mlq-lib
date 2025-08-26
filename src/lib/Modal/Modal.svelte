@@ -5,40 +5,44 @@
 -->
 
 <script lang="ts">
-  import { onMount, onDestroy } from "svelte";
+  import { type Snippet } from "svelte";
   import Portal from '@lib/Portal/Portal.svelte';
+  import { CloseFillSystem } from 'svelte-remix';
 
-  export let isVisible = false;
-  export let hideModal = () => {};
-
-  // Options
-  export let showCloseButton = false;
-  export let hideOnEscape = false;
-  export let blackout = false;
-  export let closeOnBackdrop = true;
+  let { isVisible, hideModal, showCloseButton, hideOnEscape, blackout, closeOnBackdrop, children }: {
+    isVisible: boolean;
+    hideModal: () => unknown;
+    showCloseButton?: boolean;
+    hideOnEscape?: boolean;
+    blackout?: boolean;
+    closeOnBackdrop?: boolean;
+    children: Snippet;
+  } = $props();
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Escape" && hideOnEscape) {
+    if (e.key === "Escape" && hideOnEscape && isVisible) {
       hideModal();
     }
   };
 
-  onMount(() => {
+  $effect(() => {
     if (document) {
-      document.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = 'hidden';
+      if (isVisible) {
+        document.addEventListener("keydown", handleKeyDown);
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.removeEventListener("keydown", handleKeyDown);
+        document.body.style.overflow = 'auto';
+      }
     }
-  });
+  })
 
-  onDestroy(() => {
-    if (document) {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = 'auto';
+  const backdropClick = (e: MouseEvent) => {
+    if (closeOnBackdrop && (e.target as HTMLElement).classList.contains("Modal-content")) {
+      hideModal();
     }
-  });
+  }
 
-  const backdropClick = (e: MouseEvent) =>
-    closeOnBackdrop && (e.target as HTMLElement).classList.contains("Modal-content") && hideModal();
 </script>
 
 {#if isVisible}
@@ -46,17 +50,23 @@
     <div class="Modal">
       <div class={`Modal-backdrop ${blackout ? "Modal-backdrop-blackout" : ""}`} ></div>
 
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <div class="Modal-content" on:mouseup={backdropClick}>
+      <div
+        class="Modal-content"
+        onmouseup={backdropClick}
+        role="dialog"
+        tabindex="-1"
+        aria-label="Close dialog"
+      >
         {#if showCloseButton}
-          <div class="Modal-close-button-wrapper" role="button" tabindex="-1" on:mouseup={() => hideModal()}>
-            <div class="Modal-close-button">
-              <i class="ri-close-line"></i>
-            </div>
+          <div class="Modal-close-button-wrapper" role="button" tabindex="-1" onmouseup={() => hideModal()}>
+            <button class="Modal-close-button">
+              <CloseFillSystem/>
+            </button>
           </div>
         {/if}
 
-        <slot />
+        {@render children()}
+
       </div>
     </div>
   </Portal>
@@ -96,13 +106,10 @@
     color: white;
     border-radius: var(--border-radius-control);
     transition: var(--transition-base);
+    padding: .25rem;
 
     &:hover {
       background: rgba(255, 255, 255, 0.2);
-    }
-
-    > i {
-      margin: auto;
     }
   }
 

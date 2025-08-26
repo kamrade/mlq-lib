@@ -31,6 +31,8 @@
     searchable=true
   }: ISelectProps = $props();
 
+  const menuId = `select-menu-${crypto.randomUUID()}`;
+
   let currentTitle = $derived<string>(value?.title || '');
   // Нужен для того, чтоб позиционировать Menu относительно parent элемента
   let menuParentElement = $state<HTMLDivElement | null>(null);
@@ -89,7 +91,7 @@
   const showMenu = () => (isMenuVisible = true);
   const hideMenu = () => (isMenuVisible = false);
 
-  const mouseEnterHandler = () => {
+  const focusHandler = () => {
     if (!isMenuVisible) {
       showMenu();
     }
@@ -152,14 +154,12 @@
 
 <div class={`dropdown-toggler ${isMenuVisible ? "dropdown-toggler-hover" : ""}`}
    bind:this={menuParentElement}
-   aria-haspopup="listbox"
-   aria-expanded={isMenuVisible}
 >
 
   <TextInputBlock
     disabled={disabled || isLoadingOptions}
     readonly
-    onFocus={mouseEnterHandler}
+    onFocus={focusHandler}
     onKeyDown={handleControlKeyDown}
     onClear={handleClear}
     pseudoFocus={isMenuVisible}
@@ -169,6 +169,10 @@
     placeholder={placeholder}
     bind:value={currentTitle}
     bind:this={textInputBlock}
+
+    ariaHasPopup="listbox"
+    ariaExpanded={isMenuVisible}
+    ariaControls={menuId}
   >
     {#snippet suffix()}
       <div class="flex items-center gap-3">
@@ -181,6 +185,7 @@
   </TextInputBlock>
 
   <Menu
+    id={menuId}
     parentElement={menuParentElement}
     appearanceOnHover={false}
     isVisible={isMenuVisible}

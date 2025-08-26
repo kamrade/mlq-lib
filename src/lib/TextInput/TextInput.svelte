@@ -20,6 +20,9 @@
     style,
     classNames,
     autoFocus,
+    ariaHasPopup,
+    ariaExpanded,
+    ariaControls,
     ...rest
   }: ITextInputProps = $props();
 
@@ -51,6 +54,9 @@
   {name}
   {id}
   {style}
+  aria-haspopup={ariaHasPopup}
+  aria-expanded={ariaExpanded}
+  aria-controls={ariaControls}
   {...rest}
 />
 

@@ -15,6 +15,7 @@
     width = 0,
     fullWidth,
     minWidth = 320,
+    id,
     children
   }: IMenuProps = $props();
 
@@ -63,6 +64,7 @@
 
 {#if isVisible}
   <div
+    {id}
     role="menu"
     tabindex="0"
     onmouseleave={mouseLeaveHandler}

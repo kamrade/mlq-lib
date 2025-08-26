@@ -12,4 +12,5 @@ export interface IMenuProps {
   minWidth?: number;
   children: Snippet;
   fullWidth?: boolean;
+  id?: string;
 }

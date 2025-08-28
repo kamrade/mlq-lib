@@ -9,7 +9,7 @@
 
 <hr class="mt-4 mb-8 border-t border-gray-300" />
 
-<Label>
+<Label forValue="input-inside-of-the-label">
   <p class="mb-1">Test label</p>
   <TextInput id="input-inside-of-the-label" />
 </Label>

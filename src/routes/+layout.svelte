@@ -1,5 +1,7 @@
 <script lang="ts">
   import { navigating } from '$app/state';
+  import { StickyHeader } from "@lib";
+
   let { children } = $props();
   import '../styles/index.css';
 
@@ -12,24 +14,32 @@
 
 
     <!-- Header -->
-    <header class="bg-gray-800 text-white p-2">
-      <div class="container mx-auto">
-        <div class="flex gap-6">
-          <h1 class="text-xl font-medium uppercase tracking-widest">Milk KIT</h1>
-          {#if navigating.to}
-            <p class="text-gray-600">Loading</p>
-          {/if}
+    <StickyHeader>
+      <header class="bg-gray-800 text-white p-2">
+        <div class="container mx-auto">
+          <div class="flex gap-6">
+            <h1 class="text-xl font-medium uppercase tracking-widest">Milk KIT</h1>
+            {#if navigating.to}
+              <p class="text-gray-600">Loading</p>
+            {/if}
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </StickyHeader>
 
     <div class="container mx-auto">
       <div class="flex flex-1">
         <!-- Sidebar -->
-        <aside class="w-96 py-4 hidden md:block">
+        <aside class="py-4 hidden md:block" style="width: 320px; min-width: 320px;">
           <nav class="navigation">
             <ul class="space-y-2">
-              <li class="text-xs uppercase tracking-wider text-gray-500 font-medium">Button</li>
+              <li class="text-xs uppercase tracking-wider text-gray-500 font-medium">Accordion</li>
+              <li><a href="/showcase/accordion" class="text-gray-700 hover:underline">Accordion basic</a></li>
+
+              <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Card</li>
+              <li><a href="/showcase/card" class="text-gray-700 hover:underline">Card basic</a></li>
+
+              <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Button</li>
               <li><a href="/showcase/button-primitive" class="text-gray-700 hover:underline">Button Primitive</a></li>
               <li><a href="/showcase/button-milk" class="text-gray-700 hover:underline">Button Milk</a></li>
               <li><a href="/showcase/button-actions" class="text-gray-700 hover:underline">Button Actions</a></li>
@@ -50,7 +60,7 @@
               <li><a href="/showcase/checkbox-primitive-form" class="text-gray-700 hover:underline">Checkbox Primitive Form</a></li>
               
               <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Menu</li>
-              <li><a href="/showcase/menu" class="text-gray-700 hover:underline">Menu on hover</a></li>
+              <li><a href="/showcase/menu-hover" class="text-gray-700 hover:underline">Menu on hover</a></li>
               <li><a href="/showcase/menu-onclick" class="text-gray-700 hover:underline">Menu on click</a></li>
               <li><a href="/showcase/menu-portal" class="text-gray-700 hover:underline">Menu Portal</a></li>
               

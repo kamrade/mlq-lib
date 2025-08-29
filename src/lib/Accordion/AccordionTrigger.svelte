@@ -5,20 +5,11 @@
 
   let { children }: IAccordionTriggerProps = $props();
 
-  const itemState = getContext<IAccordionItemContext>('accordion-item-context');
-  const accordionState = getContext<IAccordionContext>('accordion-context');
-  let isOpen = $state(false);
-
-  itemState?.isOpen?.subscribe((val: boolean) => isOpen = val);
+  const { isOpen, value } = getContext<IAccordionItemContext>('accordion-item-context');
+  const { open, close } = getContext<IAccordionContext>('accordion-context');
 
   const handleClick = () => {
-    if (isOpen) {
-      accordionState?.close?.();
-      isOpen = false;
-    } else {
-      accordionState?.open?.(itemState.value);
-      isOpen = true;
-    }
+    if ($isOpen) { close?.() } else { open?.(value) }
   }
 
 </script>
@@ -28,7 +19,7 @@
     <span>
       {@render children()}
     </span>
-    {#if isOpen }
+    {#if $isOpen }
       <ArrowUpSLineArrows size="1em"/>
     {:else}
       <ArrowDownSLineArrows size="1em"/>

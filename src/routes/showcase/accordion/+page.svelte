@@ -12,7 +12,7 @@
 
     <AccordionItem value="accordion-1">
       <AccordionTrigger>
-        <span class="font-lg font-semibold">Product Information</span>
+        <span class="text-sm font-medium">Product Information</span>
 
       </AccordionTrigger>
       <AccordionContent>
@@ -26,7 +26,7 @@
 
     <AccordionItem value="accordion-2">
       <AccordionTrigger>
-        <span class="font-lg font-semibold">Shipping Details</span>
+        <span class="text-sm font-medium">Shipping Details</span>
       </AccordionTrigger>
       <AccordionContent>
         <span class="text-sm">
@@ -39,7 +39,7 @@
 
     <AccordionItem value="accordion-3">
       <AccordionTrigger>
-        <span class="font-lg font-semibold">Return Policy</span>
+        <span class="text-sm font-medium">Return Policy</span>
       </AccordionTrigger>
       <AccordionContent>
         <span class="text-sm">

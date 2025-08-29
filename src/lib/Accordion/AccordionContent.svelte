@@ -1,21 +1,32 @@
 <script lang="ts">
-  import { type Snippet, getContext } from "svelte";
-  import type {Writable} from "svelte/store";
+  import { getContext } from "svelte";
+  import type {IAccordionContentProps, IAccordionItemContext} from "./Accordion.types";
 
-  let { children }: { children: Snippet } = $props();
-
-  const { isOpen } = getContext<{ isOpen: Writable<boolean>, value: string }>('accordion-item-context');
+  let { children }: IAccordionContentProps = $props();
+  const { isOpen } = getContext<IAccordionItemContext>('accordion-item-context');
+  let accordionContent: HTMLDivElement | null = $state(null);
+  let height = $derived<number>(
+    accordionContent
+      ? (accordionContent as HTMLDivElement).getBoundingClientRect?.().height
+      : 0
+  );
 
 </script>
 
-{#if $isOpen}
-  <div class="AccordionContent">
+<div class="AccordionContentWrapper" style={`height: ${$isOpen ? height + 8 : 0}px`}>
+  <div class="AccordionContent" bind:this={accordionContent}>
     {@render children()}
   </div>
-{/if}
+</div>
 
 <style lang="scss">
   .AccordionContent {
     margin-bottom: 1em;
+  }
+
+  .AccordionContentWrapper {
+    overflow: hidden;
+    height: 0;
+    transition: all .3s ease-in-out;
   }
 </style>

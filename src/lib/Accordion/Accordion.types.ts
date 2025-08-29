@@ -15,6 +15,10 @@ export interface IAccordionTriggerProps {
   children: Snippet;
 }
 
+export interface IAccordionContentProps {
+  children: Snippet;
+}
+
 
 
 export interface IAccordionContext {

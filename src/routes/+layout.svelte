@@ -9,7 +9,7 @@
 
 
 
-<div class="onest-font">
+<div class="onest-font text-gray-700">
   <div class="min-h-screen flex flex-col">
 
 

@@ -20,7 +20,7 @@
             Card description
           </CardDescription>
         </CardHeader>
-        
+
         <CardContent>
           <Label forValue="input-inside-of-the-label">
             <p class="mb-1">Test label</p>

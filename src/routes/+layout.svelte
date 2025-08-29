@@ -36,6 +36,9 @@
               <li class="text-xs uppercase tracking-wider text-gray-500 font-medium">Accordion</li>
               <li><a href="/showcase/accordion" class="text-gray-700 hover:underline">Accordion basic</a></li>
 
+              <li class="text-xs uppercase tracking-wider text-gray-500 font-medium">Sheet</li>
+              <li><a href="/showcase/sheet-base" class="text-gray-700 hover:underline">Sheet base</a></li>
+
               <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">Card</li>
               <li><a href="/showcase/card" class="text-gray-700 hover:underline">Card basic</a></li>
 
@@ -43,6 +46,7 @@
               <li><a href="/showcase/button-primitive" class="text-gray-700 hover:underline">Button Primitive</a></li>
               <li><a href="/showcase/button-milk" class="text-gray-700 hover:underline">Button Milk</a></li>
               <li><a href="/showcase/button-actions" class="text-gray-700 hover:underline">Button Actions</a></li>
+              <li><a href="/showcase/button-milk-icon" class="text-gray-700 hover:underline">Button Milk Icon</a></li>
               
               <li class="text-xs uppercase tracking-wider text-gray-500 font-medium pt-3">TextInput</li>
               <li><a href="/showcase/text-input-primitive" class="text-gray-700 hover:underline">Text Input Primitive</a></li>

@@ -20,4 +20,5 @@ export interface IButtonProps {
   loading?: boolean;
   style?: string;
   children: Snippet;
+  iconButton?: boolean;
 }

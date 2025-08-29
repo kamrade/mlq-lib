@@ -14,5 +14,6 @@ export * from './Icon';
 export * from './StickyHeader';
 export * from './Card';
 export * from './Accordion';
+export * from './Sheet';
 
 export * from './utils';

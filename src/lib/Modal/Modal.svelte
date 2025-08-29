@@ -5,19 +5,12 @@
 -->
 
 <script lang="ts">
-  import { type Snippet } from "svelte";
+
   import Portal from '@lib/Portal/Portal.svelte';
   import { CloseFillSystem } from 'svelte-remix';
+  import type { IModalProps } from './Modal.types';
 
-  let { isVisible, hideModal, showCloseButton, hideOnEscape, blackout, closeOnBackdrop, children }: {
-    isVisible: boolean;
-    hideModal: () => unknown;
-    showCloseButton?: boolean;
-    hideOnEscape?: boolean;
-    blackout?: boolean;
-    closeOnBackdrop?: boolean;
-    children: Snippet;
-  } = $props();
+  let { isVisible, hideModal, showCloseButton, hideOnEscape, blackout, closeOnBackdrop, children }: IModalProps= $props();
 
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Escape" && hideOnEscape && isVisible) {

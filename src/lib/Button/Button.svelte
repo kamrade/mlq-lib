@@ -19,6 +19,7 @@
     loading,
     children,
     style,
+    iconButton,
     ...rest
   }: IButtonProps = $props();
 
@@ -30,7 +31,7 @@
   onmouseenter={onMouseEnter}
   onmouseleave={onMouseLeave}
   disabled={disabled || loading} {type} {name} {id} {style} {...rest}
-  class={`Button ${classNames}`}
+  class={`Button ${iconButton ? 'Button-icon' : ''} ${classNames ? classNames : ''}`}
   class:block={block}
   class:loading={loading}
 >
@@ -77,6 +78,11 @@
     --focus-color: var(--background-color);
     --focus-shadow: 0 0 0 2px var(--focus-color);
     --disabled-opacity: 0.6;
+
+    &.Button-icon {
+      --padding-y: 9px;
+      --padding-x: 9px;
+    }
   }
 
   .Button {

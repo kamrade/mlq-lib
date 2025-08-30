@@ -20,7 +20,7 @@
     width: 440px;
     max-width: 100%;
     position: relative;
-    margin: 4rem auto;
+    margin: auto;
     z-index: var(--zindex-modal);
     box-shadow: 0 0 200px rgba(0, 0, 0, 0.1);
     display: flex;

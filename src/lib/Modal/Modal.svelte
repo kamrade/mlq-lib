@@ -119,5 +119,7 @@
     width: 100%;
     overflow-y: scroll;
     background: transparent;
+    display: flex;
+    padding: 2rem 0;
   }
 </style>

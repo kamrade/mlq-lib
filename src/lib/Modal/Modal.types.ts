@@ -9,3 +9,29 @@ export interface IModalProps {
   closeOnBackdrop?: boolean;
   children: Snippet;
 }
+
+export interface IModalDialogProps {
+  rounded?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+  children: Snippet;
+}
+
+export interface IDialogHeaderProps {
+  children: Snippet;
+}
+
+export interface IDialogFooterProps {
+  children: Snippet;
+}
+
+export interface IDialogTitleProps {
+  children: Snippet;
+}
+
+export interface IDialogDescriptionProps {
+  children: Snippet;
+}
+
+export interface IDialogContentProps {
+  children: Snippet;
+}

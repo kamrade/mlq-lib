@@ -28,6 +28,11 @@
         document.body.style.overflow = 'auto';
       }
     }
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = 'auto';
+    }
   })
 
   const backdropClick = (e: MouseEvent) => {
@@ -83,7 +88,7 @@
 
   .Modal-close-button-wrapper {
     position: fixed;
-    right: 1.5rem;
+    right: .25rem;
     top: 0.25rem;
   }
 

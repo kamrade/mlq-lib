@@ -5,29 +5,32 @@
 -->
 
 <script lang="ts">
-  export let rounded = false;
-  export let size: 'sm' | 'md' | 'lg' = 'md';
+  import { type IModalDialogProps } from './Modal.types';
+  let { children, rounded, size='md' } : IModalDialogProps = $props();
 </script>
 
 <div class={`ModalDialog ModalDialog-${size}`} style={`border-radius: ${rounded ? 'var(--border-radius-modal)' : '0'}`}>
-  <slot />
+  {@render children()}
 </div>
 
 <style lang="scss">
   .ModalDialog {
+    padding: 1rem 0;
     background-color: white;
-    padding: 2rem;
-    width: 640px;
+    width: 440px;
     max-width: 100%;
     position: relative;
     margin: 4rem auto;
     z-index: var(--zindex-modal);
     box-shadow: 0 0 200px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+
     &.ModalDialog-sm {
-      width: 480px;
+      width: 380px;
     }
     &.ModalDialog-lg {
-      width: 800px;
+      width: 640px;
     }
   }
 </style>

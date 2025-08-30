@@ -13,6 +13,7 @@ export const navigationData: INavigationItem[] = [
 
   { type: 'heading', label: 'Sheet' },
   { type: 'link', label: 'Sheet base', link: '/showcase/sheet-base' },
+  { type: 'link', label: 'Sheet hideable', link: '/showcase/sheet-hideable' },
 
   { type: 'heading', label: 'Card' },
   { type: 'link', label: 'Card Basic', link: '/showcase/card' },
@@ -58,6 +59,7 @@ export const navigationData: INavigationItem[] = [
 
   { type: 'heading', label: 'Dialogs' },
   { type: 'link', label: 'Modal', link: '/showcase/modal-base' },
+  { type: 'link', label: 'Modal Complex', link: '/showcase/modal-complex' },
 
   { type: 'heading', label: 'Icons' },
   { type: 'link', label: 'Icon Loading Animation', link: '/showcase/icon-loading-animation' }

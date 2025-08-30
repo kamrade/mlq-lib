@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Select, type ISelectItem } from '@lib';
+  import {Select, type ISelectItem, Divider, PageTitle} from '@lib';
 
   let { data }: {
     data: { selectData: ISelectItem[], selectDataMin: ISelectItem[] }
@@ -10,7 +10,8 @@
 
 </script>
 
-<h3 class="text-2xl font-medium mb-4">Select base</h3>
+<PageTitle>Select Flat</PageTitle>
+<Divider></Divider>
 
 <div class="mb-6">
   <Select fullWidthMenu placeholder="Enter Country" options={data.selectData} bind:value={value} />

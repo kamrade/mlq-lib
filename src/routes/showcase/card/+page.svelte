@@ -1,12 +1,21 @@
 <script lang="ts">
-  import { Card, CardFooter, CardHeader, CardTitle, CardDescription, CardContent, TextInput, ButtonMilk } from '@lib';
+  import {
+    Card,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+    CardDescription,
+    CardContent,
+    TextInput,
+    ButtonMilk,
+    Divider, PageTitle
+  } from '@lib';
   import Label from "@lib/Label/Label.svelte";
   import { CheckboxCircleFillSystem } from "svelte-remix";
 </script>
 
-<h2 class="text-2xl font-medium mb-4">Card</h2>
-
-<hr class="mt-4 mb-8 border-t border-gray-300" />
+<PageTitle>Card</PageTitle>
+<Divider></Divider>
 
 <div class="mb-3">
   <div class="grid grid-cols-8 gap-3">

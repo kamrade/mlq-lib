@@ -1,9 +1,10 @@
 <script>
   import { BookMarkedFillDocument, Bookmark3FillBusiness, AddCircleFillSystem, AddLargeFillSystem, CloseLargeLineSystem,Chat1FillCommunication } from 'svelte-remix';
-  import {ButtonMilk} from "@lib";
+  import {ButtonMilk, Divider, PageTitle} from "@lib";
 </script>
 
-<h2 class="text-2xl font-medium mb-4">Button Milk Icon Component</h2>
+<PageTitle>Button Milk Icon Component</PageTitle>
+<Divider></Divider>
 
 <div class="mb-8 flex gap-1 items-start">
   <ButtonMilk iconButton variant="primary-emphasis" size="sm">

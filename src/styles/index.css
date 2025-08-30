@@ -91,6 +91,7 @@
   --zindex-dropdown: 1060;
   --zindex-sticky: 1020;
   --zindex-fixed: 1030;
+  --zindex-sheet: 1035;
   --zindex-offcanvas-backdrop: 1040;
   --zindex-offcanvas: 1045;
   --zindex-modal-backdrop: 1050;

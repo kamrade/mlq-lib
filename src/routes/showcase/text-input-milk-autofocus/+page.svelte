@@ -1,6 +1,9 @@
 <script lang="ts">
-  import { TextInputMilk } from '@lib';
+  import {Divider, PageTitle, TextInputMilk} from '@lib';
 </script>
+
+<PageTitle>Text Input Milk with Autofocus</PageTitle>
+<Divider/>
 
 <div class="mb-4">
   <TextInputMilk autoFocus size="lg" placeholder="Text Input Milk Autofocus" />

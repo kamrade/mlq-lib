@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { TextInputMilk, TextInputBlock, ButtonMilk, type TextInputInstance } from "@lib";
+  import {TextInputMilk, TextInputBlock, ButtonMilk, type TextInputInstance, Divider, PageTitle} from "@lib";
   import { CheckboxCircleFillSystem, ArrowRightSLineArrows } from 'svelte-remix';
 
   let textInputValue = $state('');
@@ -7,6 +7,9 @@
 
   let textInputBlock: TextInputInstance;
 </script>
+
+<PageTitle>Text Input Bindable</PageTitle>
+<Divider/>
 
 <TextInputMilk bind:value={textInputValue} placeholder="This Text Input is binded"/>
 <div class="py-2 text-gray-500 text-xs">Current value: {textInputValue}</div>

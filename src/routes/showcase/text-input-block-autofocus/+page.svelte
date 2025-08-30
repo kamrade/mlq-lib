@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { TextInputBlock } from '@lib';
+  import {Divider, PageTitle, TextInputBlock} from '@lib';
   import { CheckboxCircleFillSystem, ArrowRightSLineArrows } from 'svelte-remix';
 </script>
 
-<h2 class="text-2xl font-medium mb-4">Text Input Block</h2>
+<PageTitle>Text Input Autofocus</PageTitle>
+<Divider/>
 
 <TextInputBlock autoFocus size='lg' placeholder="Text Input with snippets">
   {#snippet prefix()}

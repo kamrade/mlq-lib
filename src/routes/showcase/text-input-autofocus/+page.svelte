@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { TextInput } from "@lib";
+  import {Divider, PageTitle, TextInput} from "@lib";
 
 	let textInputValue = $state('');
 
 </script>
 
-<h2 class="text-2xl font-medium mb-4">Text Input Primitive</h2>
+<PageTitle>Text Input Primitive</PageTitle>
+<Divider/>
 
 <h3 class="text-lg mb-2">Bindable Text Input</h3>
 <div class="mb-2">

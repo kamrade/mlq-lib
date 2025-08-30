@@ -1,15 +1,21 @@
 <script lang="ts">
-  import { CommandRoot, CommandInput, CommandList, CommandGroup, CommandItem, Menu, ButtonMilk } from '@lib';
+  import {
+    CommandRoot,
+    CommandInput,
+    CommandList,
+    CommandGroup,
+    CommandItem,
+    Menu,
+    ButtonMilk,
+    Divider,
+    PageTitle
+  } from '@lib';
   import { groupList } from './data';
 
   let label = "Выберите город";
 	let menuWrapperElementHover: HTMLDivElement;
 	let isHoverMenuVisible = false;
 	let menuHoverElement: HTMLDivElement;
-	let menu: HTMLDivElement;
-	let contentHeight = 0;
-
-  $: contentHeight = menu?.getBoundingClientRect().height || 0;
 
 	const showHoverMenu = () => (isHoverMenuVisible = true);
 	const hideHoverMenu = () => (isHoverMenuVisible = false);
@@ -23,9 +29,8 @@
 
 </script>
 
-<h2 class="text-2xl font-medium mb-4">Command in Menu</h2>
-
-
+<PageTitle>Command in menu</PageTitle>
+<Divider></Divider>
 
 <div class={`dropdown-toggler ${isHoverMenuVisible ? "dropdown-toggler-hover" : ""}`}
 	bind:this={menuWrapperElementHover}
@@ -42,16 +47,15 @@
         hideMenu={hideHoverMenu}
         parentElement={menuWrapperElementHover}
         minWidth={500}
-        {contentHeight}
       >
-        <div class="menu" bind:this={menu}>
+        <div class="menu">
           <CommandRoot>  
             <CommandInput autoFocus={true}></CommandInput>
             
             <CommandList>
-              {#each groupList as group}
+              {#each groupList as group (group.heading)}
                 <CommandGroup heading={group.heading}>
-                  {#each group.items as item}
+                  {#each group.items as item (item.title)}
                     <CommandItem>{item.title}</CommandItem>
                   {/each}
                 </CommandGroup>

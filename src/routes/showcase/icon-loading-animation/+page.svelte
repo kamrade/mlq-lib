@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { IconLoading } from '@lib';
+  import {Divider, IconLoading, PageTitle} from '@lib';
 </script>
 
-<h2 class="text-2xl font-medium mb-4">Icon loading with animation</h2>
+<PageTitle>Icon loading with animation</PageTitle>
+<Divider></Divider>
 
 <div class="mb-6">
   <IconLoading />

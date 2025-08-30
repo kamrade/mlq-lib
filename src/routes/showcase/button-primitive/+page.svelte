@@ -1,12 +1,13 @@
 <script lang="ts">
   import { CheckboxCircleFillSystem, ArrowRightSLineArrows } from 'svelte-remix';
-  import { Button, type ButtonInstance } from '@lib';
+  import {Button, type ButtonInstance, Divider, PageTitle} from '@lib';
 
   /** @type {import('./Button.svelte').default} */
   let buttonRef: ButtonInstance;
 </script>
 
-<h2 class="text-2xl font-medium mb-4">Button Primitives</h2>
+<PageTitle>Button Primitive</PageTitle>
+<Divider></Divider>
 
 <div class="mb-6 flex gap-2 flex-wrap">
   <Button loading={true}><CheckboxCircleFillSystem size="1em"/>Loading Button</Button>

@@ -1,15 +1,18 @@
 <script lang="ts">
-  import { Checkbox, ButtonMilk } from '@lib';
+  import {Checkbox, ButtonMilk, Divider, PageTitle} from '@lib';
   let agree = $state(false);
 </script>
+
+<PageTitle>Checkbox Primitive in the Form</PageTitle>
+<Divider></Divider>
 
 <div class="p-6 border border-gray-300 rounded-xl">
   <form onsubmit={(e) => console.log(e)}>
 
     <label class="flex gap-2" for="agree">
-      <div style="padding-top: 4px">
+      <span style="padding-top: 4px">
         <Checkbox id="agree" bind:checked={agree} name="agree" value="agree"/>
-      </div>
+      </span>
       <span>По сообщению Royal World Thailand, ключевые королевские мероприятия, включая традиционную церемонию в тронном зале Амарин Виничай в Бангкоке, были отменены по распоряжению Короля. Причиной стало обострение конфликта, начавшегося 24 июля на тайско-камбоджийской границе, в результате которого пострадали гражданские лица в провинциях Убонратчатхани, Сурин и Сисакет.</span>
     </label>
 

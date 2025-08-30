@@ -1,7 +1,11 @@
 <script lang="ts">
   import Label from "@lib/Label/Label.svelte";
   import TextInput from "@lib/TextInput/TextInput.svelte";
+  import {Divider, PageTitle} from "@lib";
 </script>
+
+<PageTitle>Text Input with Label</PageTitle>
+<Divider/>
 
 <Label forValue="test-input">Test label</Label>
 <TextInput id="test-input" />

@@ -17,7 +17,7 @@
     CommandInput,
     Menu,
     TextInputMilk,
-    type TextInputInstance,
+    type TextInputInstance, Divider, PageTitle,
   } from '@lib';
   import { groupList, type ISelectItem } from './data';
 
@@ -74,7 +74,8 @@
 
 </script>
 
-<h2 class="text-2xl font-medium mb-4">Select</h2>
+<PageTitle>Command Select</PageTitle>
+<Divider></Divider>
 
 <div class="mb-4">
   <TextInputMilk variant="contained" size="lg" placeholder="Temp 1" />

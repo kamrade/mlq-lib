@@ -1,9 +1,19 @@
 <script lang="ts">
-  import { CommandRoot, CommandInput, CommandList, CommandGroup, CommandItem, TextInputMilk } from '@lib';
+  import {
+    CommandRoot,
+    CommandInput,
+    CommandList,
+    CommandGroup,
+    CommandItem,
+    TextInputMilk,
+    Divider,
+    PageTitle
+  } from '@lib';
   import { CalendarLineBusiness, UserSmileLineUserFaces } from 'svelte-remix';
 </script>
 
-<h2 class="text-2xl font-medium mb-4">Command</h2>
+<PageTitle>Command</PageTitle>
+<Divider></Divider>
 
 <div class="mb-3">
   <CommandRoot>

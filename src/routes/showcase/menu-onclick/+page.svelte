@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Menu, ButtonMilk } from '@lib';
+	import {Menu, ButtonMilk, Divider, PageTitle} from '@lib';
   import { menuLinks } from './data';
 
 	let label = "Выберите город";
@@ -19,7 +19,8 @@
 </script>
 
 
-<h2 class="text-2xl font-medium mb-4">Menu</h2>
+<PageTitle>Menu</PageTitle>
+<Divider></Divider>
 
 <div class={`dropdown-toggler ${isHoverMenuVisible ? "dropdown-toggler-hover" : ""}`}
 	bind:this={menuWrapperElementHover}

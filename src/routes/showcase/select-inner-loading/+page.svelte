@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Select, type ISelectGroupData, type ISelectItem } from '@lib';
+  import {Select, type ISelectGroupData, type ISelectItem, Divider, PageTitle} from '@lib';
 
   let { data }: {
     data: { selectData: Promise<ISelectGroupData[]> }
@@ -9,12 +9,14 @@
 
 </script>
 
+<PageTitle>Select Inner Loading</PageTitle>
+<Divider/>
+
 <div class="mb-6">
-  <h3 class="text-2xl font-medium mb-4">Select base</h3>
   <Select fullWidthMenu placeholder="Enter City" options={data.selectData} bind:value={value_first} />
 </div>
 
-<hr class="my-8 border-0 border-t border-gray-400" />
+<Divider/>
 
 <div class="mb-3">
   <p>Value: {value_first ? `${value_first?.title} | ${value_first?.value}` : ''}</p>

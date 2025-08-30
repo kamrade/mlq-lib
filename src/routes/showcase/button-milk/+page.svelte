@@ -1,12 +1,13 @@
 <script lang="ts">
   import { CheckboxCircleFillSystem} from 'svelte-remix';
-  import { ButtonMilk, type ButtonInstance } from '@lib';
+  import {ButtonMilk, type ButtonInstance, Divider, PageTitle} from '@lib';
 
 
   let buttonRef: ButtonInstance;
 </script>
 
-<h2 class="text-2xl font-medium mb-4">Button Component</h2>
+<PageTitle>Button Milk Component</PageTitle>
+<Divider></Divider>
 
 <div class="mb-8 flex gap-2 items-start">
   <ButtonMilk onClick={() => buttonRef.focus()} variant="base-contained" size="sm"><CheckboxCircleFillSystem size="1em"/>Focus button</ButtonMilk>

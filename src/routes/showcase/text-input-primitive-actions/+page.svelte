@@ -1,11 +1,12 @@
 <script lang="ts">
-  import { TextInput, ButtonMilk, type TextInputInstance } from '@lib';
+  import {TextInput, ButtonMilk, type TextInputInstance, Divider, PageTitle} from '@lib';
 
   let textInputBlock: TextInputInstance;
   let textInputValue = $state('');
 </script>
 
-<h2 class="text-2xl font-medium mb-4">Text Input Primitive Actions</h2>
+<PageTitle>Text Input Primitive Actions</PageTitle>
+<Divider/>
 
 <div class="mb-2">
   <TextInput bind:value={textInputValue} placeholder="Your text" bind:this={textInputBlock} />

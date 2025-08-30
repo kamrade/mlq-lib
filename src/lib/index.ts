@@ -15,5 +15,9 @@ export * from './StickyHeader';
 export * from './Card';
 export * from './Accordion';
 export * from './Sheet';
+export * from './PageTitle';
+export * from './PageContainer';
+export * from './Divider';
+export * from './Sidebar';
 
 export * from './utils';

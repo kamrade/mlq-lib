@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Select, type ISelectGroupData, type ISelectItem } from '@lib';
+  import {Select, type ISelectGroupData, type ISelectItem, Divider, PageTitle} from '@lib';
 
   let { data }: {
     data: { selectData: ISelectGroupData[] }
@@ -11,18 +11,21 @@
 
 </script>
 
+<PageTitle>Select</PageTitle>
+<Divider></Divider>
+
 <div class="mb-6">
-  <h3 class="text-2xl font-medium mb-4">Select base</h3>
+  <h3 class="text-lg font-medium mb-4">Select base</h3>
   <Select searchable={false} fullWidthMenu placeholder="Enter City" options={data.selectData} bind:value={value_first} />
 </div>
 
 <div class="mb-6">
-  <h3 class="text-2xl font-medium mb-4">Select with dropdown with scroll</h3>
+  <h3 class="text-lg font-medium mb-4">Select with dropdown with scroll</h3>
   <Select menuMaxHeight={200} fullWidthMenu placeholder="Enter City" options={data.selectData} bind:value={value_second} />
 </div>
 
 <div class="mb-6">
-  <h3 class="text-2xl font-medium mb-4">Disabled Select</h3>
+  <h3 class="text-lg font-medium mb-4">Disabled Select</h3>
   <Select disabled options={data.selectData} bind:value={value_third} />
 </div>
 

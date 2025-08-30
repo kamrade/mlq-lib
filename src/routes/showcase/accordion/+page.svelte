@@ -1,11 +1,10 @@
 <script lang="ts">
-  import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from "@lib";
+  import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent, PageTitle, Divider } from "@lib";
   let value = $state('accordion-2');
 </script>
 
-<h2 class="text-2xl font-medium mb-4">Accordion</h2>
-
-<hr class="mt-4 mb-8 border-t border-gray-300" />
+<PageTitle>Accordion</PageTitle>
+<Divider/>
 
 <div class="mb-3">
   <AccordionRoot {value}>

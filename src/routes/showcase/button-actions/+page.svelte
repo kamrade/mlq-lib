@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ButtonMilk } from '@lib';
+  import {ButtonMilk, Divider, PageTitle} from '@lib';
 
   let mouseEntered = $state(false);
 
@@ -13,9 +13,8 @@
 
 </script>
 
-<h2 class="text-2xl font-medium mb-4">Button Actions</h2>
-
-<hr class="mt-4 mb-8 border-t border-gray-300" />
+<PageTitle>Button with Actions</PageTitle>
+<Divider></Divider>
 
 <h3 class="text-lg mb-2">Button onMouseEnter and onMouseLeave</h3>
 

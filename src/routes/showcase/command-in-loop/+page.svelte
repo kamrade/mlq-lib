@@ -1,12 +1,14 @@
 <script lang="ts">
-  import { CommandRoot, CommandInput, CommandList, CommandGroup, CommandItem, TextInputMilk } from '@lib';
-  import { CalendarLineBusiness, UserSmileLineUserFaces } from 'svelte-remix';
-  import type { Snippet } from 'svelte';
-
-  interface ISelectGroupData {
-    heading: string;
-    content: Snippet;
-  }
+  import {
+    CommandRoot,
+    CommandInput,
+    CommandList,
+    CommandGroup,
+    CommandItem,
+    TextInputMilk,
+    Divider,
+    PageTitle
+  } from '@lib';
 
   const groupList = [{
     heading: 'Suggestions',
@@ -30,16 +32,17 @@
 
 </script>
 
-<h2 class="text-2xl font-medium mb-4">Command in loop</h2>
+<PageTitle>Command in the loop</PageTitle>
+<Divider></Divider>
 
 <div class="mb-3">
   <CommandRoot>  
     <CommandInput></CommandInput>
     
     <CommandList>
-      {#each groupList as group}
+      {#each groupList as group (group.heading)}
         <CommandGroup heading={group.heading}>
-          {#each group.items as item}
+          {#each group.items as item (item.title)}
             <CommandItem>{item.title}</CommandItem>
           {/each}
         </CommandGroup>

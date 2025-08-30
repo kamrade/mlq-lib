@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { MenuPortal, ButtonMilk } from '@lib';
+  import {MenuPortal, ButtonMilk, Divider, PageTitle} from '@lib';
   import { menuLinks } from './data';
 
   let label = "Выберите город в портале";
@@ -18,7 +18,8 @@
 </script>
 
 
-<h2 class="text-2xl font-medium mb-4">Menu Portal</h2>
+<PageTitle>Menu with Portal</PageTitle>
+<Divider></Divider>
 
 <div class={`dropdown-toggler ${isHoverMenuVisible ? "dropdown-toggler-hover" : ""}`}
      bind:this={menuWrapperElementHover}

@@ -12,7 +12,7 @@
   --color-gray-300: #E2E4E8;
   --color-gray-400: #D3D5DC;
   --color-gray-500: #9C9EA3;
-  --color-gray-600: #515256;
+  --color-gray-600: #5f6165;
   --color-gray-700: #28282B;
   --color-gray-800: #1E1F21;
   --color-gray-900: #151617;
@@ -110,65 +110,65 @@
   --bg-base: #fff;
 
 /*COLORS • PANEL*/
-  --panel-base : #F3F5F6;
-  --panel-primary: #FFF9E5;
-  --panel-success: #DDF9E6;
-  --panel-danger: #FFEDEB;
+  --panel-base : var(--color-gray-100);
+  --panel-primary: var(--color-blue-100);
+  --panel-success: var(--color-green-100);
+  --panel-danger: var(--color-red-100);
 
 /*COLORS • LINE*/
   --line-transparent: #FFFFFF00;
-  --line-base: #dcdee5;
-  --line-control-100: #ababb0;
-  --line-control-200: #717178;
-  --line-base-emp: #151617;
-  --line-primary: #FFE27B;
-  --line-primary-emp: #F0C013;
-  --line-success: #B6F7CB;
-  --line-success-emp: #62CF85;
-  --line-danger: #FBC4BF;
-  --line-danger-emp: #EA6D60;
+  --line-base: var(--color-gray-400);
+  --line-control-100: var(--color-gray-500);
+  --line-control-200: var(--color-gray-500);
+  --line-base-emp: var(--color-gray-700);
+  --line-primary: var(--color-blue-400);
+  --line-primary-emp: var(--color-blue-600);
+  --line-success: var(--color-green-400);
+  --line-success-emp: var(--color-green-600);
+  --line-danger: var(--color-red-400);
+  --line-danger-emp: var(--color-green-600);
 
 /*COLORS • BG*/
   --bg-transparent: #FFFFFF00;
 
-  --bg-base-100: #EDEEF0;
-  --bg-base-200: #E2E4E8;
-  --bg-base-300: #D3D5DC;
-  --bg-base-emp-100: #28282B;
-  --bg-base-emp-200: #1E1F21;
-  --bg-base-emp-300: #151617;
+  --bg-base-100: var(--color-gray-100);
+  --bg-base-200: var(--color-gray-200);
+  --bg-base-300: var(--color-gray-300);
+  --bg-base-emp-100: var(--color-gray-700);
+  --bg-base-emp-200: var(--color-gray-800);
+  --bg-base-emp-300: var(--color-gray-900);
 
-  --bg-primary-100: #FFF6D6;
-  --bg-primary-200: #FCF0C5;
-  --bg-primary-300: #FAEBB4;
-  --bg-primary-emp-100: #FFCC14;
-  --bg-primary-emp-200: #F7C614;
-  --bg-primary-emp-300: #F0C013;
+  --bg-primary-100: var(--color-blue-100);
+  --bg-primary-200: var(--color-blue-200);
+  --bg-primary-300: var(--color-blue-300);
+  --bg-primary-emp-100: var(--color-blue-700);
+  --bg-primary-emp-200: var(--color-blue-800);
+  --bg-primary-emp-300: var(--color-blue-900);
 
-  --bg-success-100: #C3F6D4;
-  --bg-success-200: #B1F0C6;
-  --bg-success-300: #9FEBB9;
-  --bg-success-emp-100: #1BB44C;
-  --bg-success-emp-200: #12AA43;
-  --bg-success-emp-300: #0DA13C;
+  --bg-success-100: var(--color-green-100);
+  --bg-success-200: var(--color-green-200);
+  --bg-success-300: var(--color-green-300);
+  --bg-success-emp-100: var(--color-green-700);
+  --bg-success-emp-200: var(--color-green-800);
+  --bg-success-emp-300: var(--color-green-900);
 
-  --bg-danger-100: #FCDFDC;
-  --bg-danger-200: #FAD4CF;
-  --bg-danger-300: #F7C7C1;
-  --bg-danger-emp-100: #F35749;
-  --bg-danger-emp-200: #ED4637;
-  --bg-danger-emp-300: #EB3A2A;
+  --bg-danger-100: var(--color-red-100);
+  --bg-danger-200: var(--color-red-200);
+  --bg-danger-300: var(--color-red-300);
+  --bg-danger-emp-100: var(--color-red-700);
+  --bg-danger-emp-200: var(--color-red-800);
+  --bg-danger-emp-300: var(--color-red-900);
 
 /*COLORS • TEXT*/
-  --text-base-main: #26272B;
+  --text-base-main: var(--color-gray-900);
   --text-base-inv: #FFFFFF;
-  --text-base-inv-muted: #C1C3CA;
-  --text-base-muted: #515256;
-  --text-base-placeholder: #9C9EA3;
-  --text-base-link: #6846E1;
-  --text-primary-main: #C79C00;
-  --text-success-main: #0F9E3C;
-  --text-danger-main: #D74D3F;
+  --text-base-inv-muted: var(--color-gray-400);
+  --text-base-muted: var(--color-gray-600);
+  --text-base-placeholder: var(--color-gray-500);
+  --text-base-link: var(--color-blue-900);
+  --text-primary-main: var(--color-blue-900);
+  --text-success-main: var(--color-green-900);
+  --text-danger-main: var(--color-red-900);
 }
 
 /* This needed because ButtonMilk is using global classNames and Tailwind does not see that these variables needed */

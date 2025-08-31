@@ -36,3 +36,13 @@
 </div>
 
 <Divider/>
+
+<div class="box"></div>
+
+<style lang="scss">
+  .box {
+    width: 200px;
+    height: 200px;
+    background: var(--panel-success);
+  }
+</style>

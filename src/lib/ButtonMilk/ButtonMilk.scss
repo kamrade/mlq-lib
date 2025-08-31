@@ -71,14 +71,14 @@
   }
 }
 .Button.Button-sm {
---padding-y: 2px; 
+--padding-y: 5px;
 --padding-x: 10px; 
 --font-size: 12px; 
 --line-height: 14px; 
 --border-radius: 6px; 
 --inner-gap: 3px;
   &.Button-icon {
-    --padding-y: 3px;
-    --padding-x: 3px;
+    --padding-y: 6px;
+    --padding-x: 6px;
   }
 }

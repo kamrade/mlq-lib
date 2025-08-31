@@ -1,4 +1,6 @@
 // Reexport your entry components here
+export * from './utils';
+
 export * from './Button';
 export * from './ButtonMilk';
 export * from './TextInput';
@@ -19,5 +21,6 @@ export * from './PageTitle';
 export * from './PageContainer';
 export * from './Divider';
 export * from './Sidebar';
+export * from './Badge';
 
-export * from './utils';
+

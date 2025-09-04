@@ -16,7 +16,7 @@
 
 <div class="AccordionTrigger">
   <button class="AccordionTriggerButton" onclick={handleClick}>
-    <span>
+    <span class="flex">
       {@render children()}
     </span>
     {#if $isOpen }

@@ -13,6 +13,7 @@ export const navigationData: INavigationItem[] = [
 
   { type: 'heading', label: 'Accordion' },
   { type: 'link', label: 'Accordion Basic', link: '/showcase/accordion' },
+  { type: 'link', label: 'Accordion Fancy', link: '/showcase/accordion-fancy' },
 
   { type: 'heading', label: 'Sheet' },
   { type: 'link', label: 'Sheet base', link: '/showcase/sheet-base' },

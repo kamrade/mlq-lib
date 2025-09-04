@@ -35,6 +35,7 @@
     // Variant
     &.Badge-primary {
       background-color: var(--bg-primary-emp-100);
+      color: var(--text-base-inv);
     }
     &.Badge-secondary {
       background-color: var(--bg-base-emp-100);

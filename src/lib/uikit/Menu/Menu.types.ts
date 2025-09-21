@@ -14,3 +14,16 @@ export interface IMenuProps {
   fullWidth?: boolean;
   id?: string;
 }
+
+export interface IMenuContentProps {
+  children: Snippet;
+}
+
+export interface IMenuItemTitleProps {
+  children: Snippet;
+}
+
+export interface IMenuItemProps {
+  onClick?: () => unknown;
+  children: Snippet;
+}

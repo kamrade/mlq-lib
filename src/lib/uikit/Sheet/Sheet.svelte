@@ -1,6 +1,6 @@
 <script lang="ts">
   import {clickOutsideObject} from '@lib';
-  import Portal from '@lib/Portal/Portal.svelte';
+  import Portal from '@lib/uikit/Portal/Portal.svelte';
   import type { ISheetProps } from './Sheet.types';
   import {onDestroy, onMount} from "svelte";
   import {browser} from "$app/environment";

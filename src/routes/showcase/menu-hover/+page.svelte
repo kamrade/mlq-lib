@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {Menu, ButtonMilk, Divider, PageTitle} from '@lib';
+  import { Menu, ButtonMilk, Divider, PageTitle } from '@lib';
   import { menuLinks } from './data';
 
 	let label = "Выберите город";
@@ -48,6 +48,7 @@
       parentElement={menuWrapperElementHover}
       minWidth={500}
     >
+
       <div class="menu">
         {#each menuLinks as menuLink (menuLink.link || menuLink)}
           {#if typeof menuLink === "string"}
@@ -61,6 +62,7 @@
           {/if}
         {/each}
       </div>
+
     </Menu>
 
   </div>

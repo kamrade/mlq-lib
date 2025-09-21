@@ -1,6 +1,6 @@
 <script lang="ts">
   import { TextInputBlock } from '@lib';
-  import type { ITextInputBlockProps } from '@lib/TextInputBlock/TextInputBlock.types';
+  import type { ITextInputBlockProps } from '@lib/uikit/TextInputBlock/TextInputBlock.types';
   import { Search2LineSystem } from 'svelte-remix';
   import { getContext } from 'svelte';
   import { type Writable } from 'svelte/store';

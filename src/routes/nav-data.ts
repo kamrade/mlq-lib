@@ -19,6 +19,12 @@ export const navigationData: INavigationItem[] = [
   { type: 'link', label: 'Sheet base', link: '/showcase/sheet-base' },
   { type: 'link', label: 'Sheet hideable', link: '/showcase/sheet-hideable' },
 
+  { type: 'heading', label: 'Menu' },
+  { type: 'link', label: 'Menu on hover', link: '/showcase/menu-hover' },
+  { type: 'link', label: 'Menu on click', link: '/showcase/menu-onclick' },
+  { type: 'link', label: 'Menu Portal', link: '/showcase/menu-portal' },
+  { type: 'link', label: 'Menu + Dropdown', link: '/showcase/menu-dropdown' },
+
   { type: 'heading', label: 'Card' },
   { type: 'link', label: 'Card Basic', link: '/showcase/card' },
 
@@ -42,11 +48,6 @@ export const navigationData: INavigationItem[] = [
   { type: 'heading', label: 'Checkbox' },
   { type: 'link', label: 'Checkbox Primitive', link: '/showcase/checkbox-primitive' },
   { type: 'link', label: 'Checkbox Primitive Form', link: '/showcase/checkbox-primitive-form' },
-
-  { type: 'heading', label: 'Menu' },
-  { type: 'link', label: 'Menu on hover', link: '/showcase/menu-hover' },
-  { type: 'link', label: 'Menu on click', link: '/showcase/menu-onclick' },
-  { type: 'link', label: 'Menu Portal', link: '/showcase/menu-portal' },
 
   { type: 'heading', label: 'Command' },
   { type: 'link', label: 'Command', link: '/showcase/command' },

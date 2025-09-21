@@ -110,9 +110,9 @@
       }
     }
 
-    .StickyHeaderStub {
+    //.StickyHeaderStub {
       /* высота задаётся инлайном из скрипта */
-    }
+    //}
   }
 
 </style>

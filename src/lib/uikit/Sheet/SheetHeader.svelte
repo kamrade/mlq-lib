@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type {ISheetHeaderProps} from "@lib/Sheet/Sheet.types";
+  import type {ISheetHeaderProps} from "@lib/uikit/Sheet/Sheet.types";
 
   let { children }: ISheetHeaderProps = $props();
 </script>

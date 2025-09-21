@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Label from "@lib/Label/Label.svelte";
-  import TextInput from "@lib/TextInput/TextInput.svelte";
+  import Label from "@lib/uikit/Label/Label.svelte";
+  import TextInput from "@lib/uikit/TextInput/TextInput.svelte";
   import {Divider, PageTitle} from "@lib";
 </script>
 

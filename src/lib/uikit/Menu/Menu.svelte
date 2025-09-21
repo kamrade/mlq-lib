@@ -3,34 +3,30 @@
   import { browser } from "$app/environment";
   import { clickOutsideObject } from "@lib";
   import type { IMenuProps } from "./Menu.types";
-  import Portal from '@lib/Portal/Portal.svelte';
 
   let {
     hideMenu,
     parentElement,
-    menuGap=6,
-    appearanceOnHover=false,
-    isVisible,
-    menuElement=$bindable(),
-    maxHeight=200,
-    width=0,
+    menuGap = 6,
+    appearanceOnHover = false,
+    isVisible = false,
+    menuElement = $bindable(),
+    maxHeight = 200,
+    width = 0,
     fullWidth,
-    minWidth=320,
+    minWidth = 320,
     id,
     children
   }: IMenuProps = $props();
 
   let y = $state(0);
-  let x = $state(0);
   let innerWidth = $state(0);
   let innerHeight = $state(0);
   let scrollY = $state(0);
 
-  // calculatePosition calculates differently than in Menu component
   const calculatePosition = (parentEl: HTMLElement | null) => {
     const boundingClientRect = parentEl?.getBoundingClientRect();
-    x = (boundingClientRect?.x || 0);
-    y = ((boundingClientRect?.y || 0) + (boundingClientRect?.height || 0)) + menuGap;
+    y = (boundingClientRect?.height || 0);
   };
 
   const mouseLeaveHandler = (e: MouseEvent) => {
@@ -72,28 +68,26 @@
 
 <svelte:window bind:innerWidth bind:innerHeight bind:scrollY />
 
-
 {#if isVisible}
-  <Portal>
-    <div
-      {id}
-      role="menu"
-      tabindex="0"
-      onmouseleave={mouseLeaveHandler}
-      bind:this={menuElement}
-      class="Menu"
-      style={`
-        left: ${x}px;
-        top: ${y}px;
-        width: ${fullWidth ? '100%' : width ? width + "px" : "auto"};
-        min-width: ${minWidth ? minWidth + "px" : "auto"};
-        max-height: ${maxHeight}px;
-      `}
-    >
+  <div
+    {id}
+    role="menu"
+    tabindex="0"
+    onmouseleave={mouseLeaveHandler}
+    bind:this={menuElement}
+    class="Menu"
+    style={`
+      top: ${y}px;
+      width: ${fullWidth ? '100%' : width ? width + "px" : "auto"};
+      min-width: ${minWidth ? minWidth + "px" : "auto"};
+      max-height: ${maxHeight}px;
+    `}
+  >
+    <div style={`padding-top: ${menuGap}px`}>
       {@render children()}
     </div>
-  </Portal>
-{/if}
+  </div>
+{/if} 
 
 
 <style lang="scss">

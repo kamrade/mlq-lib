@@ -105,7 +105,6 @@
       hideMenu={hideHoverMenu}
       parentElement={menuWrapperElementHover}
       minWidth={500}
-      {contentHeight}
   >
     <div class="menu" bind:this={menu}>
       <CommandRoot>

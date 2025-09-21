@@ -6,7 +6,7 @@
 
 <script lang="ts">
 
-  import Portal from '@lib/Portal/Portal.svelte';
+  import Portal from '@lib/uikit/Portal/Portal.svelte';
   import { CloseFillSystem } from 'svelte-remix';
   import type { IModalProps } from './Modal.types';
 

@@ -1,4 +1,4 @@
-import type { IButtonProps } from '@lib/Button/Button.types';
+import type { IButtonProps } from '@lib/uikit/Button/Button.types';
 
 export type ButtonMilkSizes = 'sm' | 'md' | 'lg';
 export type ButtonMilkVariants = 

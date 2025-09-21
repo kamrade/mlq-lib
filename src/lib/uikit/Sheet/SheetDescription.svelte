@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type {ISheetDescriptionProps} from "@lib/Sheet/Sheet.types";
+  import type {ISheetDescriptionProps} from "@lib/uikit/Sheet/Sheet.types";
 
   let { children }: ISheetDescriptionProps = $props();
 </script>

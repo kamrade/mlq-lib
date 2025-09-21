@@ -10,7 +10,7 @@
     ButtonMilk,
     Divider, PageTitle
   } from '@lib';
-  import Label from "@lib/Label/Label.svelte";
+  import Label from "@lib/uikit/Label/Label.svelte";
   import { CheckboxCircleFillSystem } from "svelte-remix";
 </script>
 

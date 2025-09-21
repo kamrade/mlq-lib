@@ -1,4 +1,4 @@
-import type { ITextInputProps } from '@lib/TextInput/TextInput.types';
+import type { ITextInputProps } from '@lib/uikit/TextInput/TextInput.types';
 
 export type TextInputMilkSizes = 'sm' | 'md' | 'lg';
 export type TextInputMilkVariants = 'underlined' | 'contained' | 'text';

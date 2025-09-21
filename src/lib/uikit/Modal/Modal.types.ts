@@ -1,8 +1,8 @@
 import { type Snippet } from "svelte";
 
 export interface IModalProps {
-  isVisible: boolean;
-  hideModal: () => unknown;
+  isVisible?: boolean;
+  hideModal?: () => unknown;
   showCloseButton?: boolean;
   hideOnEscape?: boolean;
   blackout?: boolean;

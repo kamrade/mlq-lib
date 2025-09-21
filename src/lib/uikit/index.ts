@@ -19,3 +19,4 @@ export * from './PageContainer';
 export * from './Divider';
 export * from './Sidebar';
 export * from './Badge';
+export * from './AlertDialog';

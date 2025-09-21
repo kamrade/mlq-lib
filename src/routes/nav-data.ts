@@ -8,6 +8,10 @@ export type INavigationItem = {
 
 
 export const navigationData: INavigationItem[] = [
+  { type: 'heading', label: 'Alert Dialog' },
+  { type: 'link', label: 'Alert Dialog Base', link: '/showcase/alert-dialog' },
+  { type: 'link', label: 'Alert Dialog Util', link: '/showcase/alert-dialog-util' },
+
   { type: 'heading', label: 'Badge' },
   { type: 'link', label: 'Badge', link: '/showcase/badge' },
 

@@ -14,7 +14,7 @@
 
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Escape" && hideOnEscape && isVisible) {
-      hideModal();
+      hideModal?.();
     }
   };
 
@@ -37,7 +37,7 @@
 
   const backdropClick = (e: MouseEvent) => {
     if (closeOnBackdrop && (e.target as HTMLElement).classList.contains("Modal-content")) {
-      hideModal();
+      hideModal?.();
     }
   }
 
@@ -56,7 +56,7 @@
       aria-label="Close dialog"
     >
       {#if showCloseButton}
-        <div class="Modal-close-button-wrapper" role="button" tabindex="-1" onmouseup={() => hideModal()}>
+        <div class="Modal-close-button-wrapper" role="button" tabindex="-1" onmouseup={() => hideModal?.()}>
           <button class="Modal-close-button">
             <CloseFillSystem/>
           </button>
